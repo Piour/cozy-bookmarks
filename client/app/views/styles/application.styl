@@ -10,14 +10,84 @@
 @import '_layout'
 @import '_responsive'
 
+body.application, input, textarea
+    color: #bbb
+    text-shadow: 0 -1px 0 #262729
+    background: none repeat scroll 0 0 rgba(30, 30, 30, 0.8)
+
+a, a:visited
+    color: #bbb
+    text-decoration: none
+
 #content
     padding: 2em
 
+[class^="icon-"], [class*=" icon-"]
+    background-image: url("../images/glyphicons-halflings.png")
+    background-position: 14px 14px
+    background-repeat: no-repeat
+    display: inline-block
+    height: 14px
+    line-height: 14px
+    width: 14px
+    vertical-align: text-top
+
+.icon-more
+    background-position: -314px -120px
+    cursor: pointer
+
+#create-bookmark-form
+    padding: 0 2em
+    input
+        padding: .5em
+        margin: 1em
+        width: 24em
+        display: none
+    textarea
+        display: block
+        display: none
+        padding: .5em
+        margin: 1em
+        width: 50em
+    .url-field
+        display: inline-block
+        width: 50em
+    .btn
+        display: none
+
+.search
+    padding: .5em
+    margin: 1em
+    width: 24em
+
+.sort, .delete-button
+    color: #bbb
+    border: 1px solid #666
+    border-radius: 10px 10px 10px 10px
+    cursor: pointer
+    margin-right: 5px
+    padding: 5px 10px
+    background: transparent
+
 #bookmark-list
     padding: 2em
-    
+
+    ul
+        list-style: none
+        li
+            border-top: 1px solid #666666;
+            padding: 1em 0;
+
     .bookmark
         margin: 1em 0
+        div, p
+            padding: .5em
+            margin: 1em
+            width: 24em
+            display: inline
 
         .title
             font-weight: bold
+            a, a:visited
+                color: #01DBFF
+                text-decoration: none

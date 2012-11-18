@@ -48,7 +48,7 @@ class ViewCollection extends View
 
     renderOne: (model) =>
         view = new @view model
-        @$el.append view.render().el
+        @$el.prepend view.render().el
         @add view
         @
 

@@ -1,4 +1,7 @@
-.title #{model.title}
-.url 
+.title 
+    a(href="#{model.url}") #{model.title}
+.url
     a(href="#{model.url}") #{model.url}
+p.tags #{model.tags}
+p.description #{model.description}
 button.delete-button delete

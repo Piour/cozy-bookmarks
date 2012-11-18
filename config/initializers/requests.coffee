@@ -1,5 +1,5 @@
 all = ->
-    emit doc.title, doc
+    emit doc.date, doc
     
 Bookmark.defineRequest "all", all, (err) ->
     if err

@@ -327,7 +327,7 @@ window.require.define({"lib/view_collection": function(exports, require, module)
     ViewCollection.prototype.renderOne = function(model) {
       var view;
       view = new this.view(model);
-      this.$el.append(view.render().el);
+      this.$el.prepend(view.render().el);
       this.add(view);
       return this;
     };
@@ -440,36 +440,57 @@ window.require.define({"views/app_view": function(exports, require, module) {
 
     AppView.prototype.afterRender = function() {
       var _this = this;
+      $(".url-field").focus();
+      $(".icon-more").click(function() {
+        $(".title-field").toggle();
+        $(".tags-field").toggle();
+        return $(".description-field").toggle();
+      });
       this.bookmarksView = new BookmarksView();
       this.bookmarksView.$el.html('<em>loading...</em>');
       return this.bookmarksView.collection.fetch({
         success: function() {
-          return _this.bookmarksView.$el.find('em').remove();
+          _this.bookmarksView.$el.find('em').remove();
+          window.sortOptions = {
+            "valueNames": ["title", "url", "tags", "description"]
+          };
+          return window.featureList = new List("bookmark-list", window.sortOptions);
         }
       });
     };
 
     AppView.prototype.onCreateClicked = function() {
-      var bookmark, title, url,
+      var bookObj, bookmark, description, tags, title, url,
         _this = this;
-      title = $('.title-field').val();
       url = $('.url-field').val();
+      title = $('.title-field').val();
+      tags = $('.tags-field').val().split(',').map(function(tag) {
+        return $.trim(tag);
+      });
+      description = $('.description-field').val();
+      if ((title != null ? title.length : void 0) === 0) {
+        title = url;
+      }
       if ((title != null ? title.length : void 0) > 0 && (url != null ? url.length : void 0) > 0) {
-        bookmark = new Bookmark({
+        bookObj = {
           title: title,
-          url: url
-        });
-        return this.bookmarksView.collection.create(bookmark, {
+          url: url,
+          tags: tags,
+          description: description
+        };
+        bookmark = new Bookmark(bookObj);
+        this.bookmarksView.collection.create(bookmark, {
           success: function() {
-            return alert("bookmark added");
+            return window.featureList.add(bookObj(function() {}));
           },
           error: function() {
             return alert("Server error occured, bookmark was not saved");
           }
         });
       } else {
-        return alert('Both fields are required');
+        alert('Both fields are required');
       }
+      return false;
     };
 
     return AppView;
@@ -491,7 +512,7 @@ window.require.define({"views/bookmark_view": function(exports, require, module)
 
     BookmarkView.prototype.className = 'bookmark';
 
-    BookmarkView.prototype.tagName = 'div';
+    BookmarkView.prototype.tagName = 'li';
 
     BookmarkView.prototype.events = {
       'click .delete-button': 'onDeleteClicked'
@@ -510,9 +531,11 @@ window.require.define({"views/bookmark_view": function(exports, require, module)
 
     BookmarkView.prototype.onDeleteClicked = function() {
       var _this = this;
+      console.log("clicked");
       this.$('.delete-button').html("deleting...");
       return this.model.destroy({
         success: function() {
+          window.featureList.remove("title", _this.model.attributes.title);
           return _this.destroy();
         },
         error: function() {
@@ -547,7 +570,7 @@ window.require.define({"views/bookmarks_view": function(exports, require, module
       return BookmarksView.__super__.constructor.apply(this, arguments);
     }
 
-    BookmarksView.prototype.el = '#bookmark-list';
+    BookmarksView.prototype.el = '#bookmark-list .list';
 
     BookmarksView.prototype.view = BookmarkView;
 
@@ -567,9 +590,11 @@ window.require.define({"views/templates/bookmark": function(exports, require, mo
   var buf = [];
   with (locals || {}) {
   var interp;
-  buf.push('<div class="title">' + escape((interp = model.title) == null ? '' : interp) + '</div><div class="url"> <a');
+  buf.push('<div class="title"> <a');
   buf.push(attrs({ 'href':("" + (model.url) + "") }, {"href":true}));
-  buf.push('>' + escape((interp = model.url) == null ? '' : interp) + '</a></div><button class="delete-button">delete</button>');
+  buf.push('>' + escape((interp = model.title) == null ? '' : interp) + '</a></div><div class="url"><a');
+  buf.push(attrs({ 'href':("" + (model.url) + "") }, {"href":true}));
+  buf.push('>' + escape((interp = model.url) == null ? '' : interp) + '</a></div><p class="tags">' + escape((interp = model.tags) == null ? '' : interp) + '</p><p class="description">' + escape((interp = model.description) == null ? '' : interp) + '</p><button class="delete-button">delete</button>');
   }
   return buf.join("");
   };
@@ -581,7 +606,7 @@ window.require.define({"views/templates/home": function(exports, require, module
   var buf = [];
   with (locals || {}) {
   var interp;
-  buf.push('<div id="content"> <h1>My bookmarks </h1><div id="create-bookmark-form"><input placeholder="title" class="title-field"/><input placeholder="url" class="url-field"/><button class="btn create-button">create</button></div><div id="bookmark-list"></div></div>');
+  buf.push('<div id="content"><H1>mY BOOkmarks</H1><form id="create-bookmark-form"><input placeholder="url" class="url-field"/><span class="icon-more"></span><br/><input placeholder="title" class="title-field"/><input placeholder="tags, separated by \',\'" class="tags-field"/><textarea placeholder="description" class="description-field"></textarea><button class="btn create-button">create</button></form><div id="bookmark-list"><input placeholder="search" class="search"/><span data-sort="title" class="sort">sort</span><ul class="list"></ul></div></div>');
   }
   return buf.join("");
   };

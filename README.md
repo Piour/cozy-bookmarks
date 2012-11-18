@@ -2,10 +2,16 @@
 
 Store all your bookmarks here !
 
-# Description
+# To do ...
 
-Source code for Make Your Own App tutorial.
+* bug on sorting newly added bookmarks
+* bug on adding bookmark with chrome hitting return
 
+# Features
+
+* create/delete bookmarks
+* store tags, description of bookmarks
+* search, sort bookmarks
 
 # About Cozy
 
