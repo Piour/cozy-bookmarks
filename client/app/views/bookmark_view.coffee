@@ -19,7 +19,6 @@ module.exports = class BookmarkView extends View
         @$('.delete-button').html "deleting..."
         @model.destroy
             success: =>
-                window.featureList.remove "title", @model.attributes.title
                 @destroy()
             error: =>
                 alert "Server error occured, bookmark was not deleted."

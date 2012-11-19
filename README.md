@@ -4,14 +4,17 @@ Store all your bookmarks here !
 
 # To do ...
 
-* bug on sorting newly added bookmarks
-* bug on adding bookmark with chrome hitting return
+* bug on sorting after adding/deleting bookmark
 
-# Features
+# Changelog
 
-* create/delete bookmarks
-* store tags, description of bookmarks
-* search, sort bookmarks
+* v0.5.2
+  * add create button (submit on hit enter)
+  * ordered by last created
+* v0.5
+  * create/delete bookmarks
+  * store tags, description of bookmarks
+  * search, sort bookmarks
 
 # About Cozy
 

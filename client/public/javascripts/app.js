@@ -459,7 +459,7 @@ window.require.define({"views/app_view": function(exports, require, module) {
       });
     };
 
-    AppView.prototype.onCreateClicked = function() {
+    AppView.prototype.onCreateClicked = function(event) {
       var bookObj, bookmark, description, tags, title, url,
         _this = this;
       url = $('.url-field').val();
@@ -480,9 +480,7 @@ window.require.define({"views/app_view": function(exports, require, module) {
         };
         bookmark = new Bookmark(bookObj);
         this.bookmarksView.collection.create(bookmark, {
-          success: function() {
-            return window.featureList.add(bookObj(function() {}));
-          },
+          success: function() {},
           error: function() {
             return alert("Server error occured, bookmark was not saved");
           }
@@ -535,7 +533,6 @@ window.require.define({"views/bookmark_view": function(exports, require, module)
       this.$('.delete-button').html("deleting...");
       return this.model.destroy({
         success: function() {
-          window.featureList.remove("title", _this.model.attributes.title);
           return _this.destroy();
         },
         error: function() {

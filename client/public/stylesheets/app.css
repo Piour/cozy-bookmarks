@@ -920,7 +920,9 @@ a:visited {
   width: 50em;
 }
 #create-bookmark-form .btn {
-  display: none;
+  display: block;
+  padding: 0.5em;
+  margin: 1em;
 }
 .search {
   padding: 0.5em;
@@ -928,7 +930,7 @@ a:visited {
   width: 24em;
 }
 .sort,
-.delete-button {
+button {
   color: #bbb;
   border: 1px solid #666;
   -webkit-border-radius: 10px 10px 10px 10px;

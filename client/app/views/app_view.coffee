@@ -34,7 +34,7 @@ module.exports = class AppView extends View
                 window.featureList = new List("bookmark-list",
                                               window.sortOptions)
 
-    onCreateClicked: =>
+    onCreateClicked: (event) =>
         url = $('.url-field').val()
         title = $('.title-field').val()
         tags = $('.tags-field').val().split(',').map (tag) -> $.trim(tag)
@@ -50,7 +50,7 @@ module.exports = class AppView extends View
                 description: description
             bookmark = new Bookmark bookObj
             @bookmarksView.collection.create bookmark,
-                success: => window.featureList.add bookObj ->
+                success: =>
                 error: => alert "Server error occured, bookmark was not saved"
         else
             alert 'Both fields are required'
