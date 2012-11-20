@@ -5,11 +5,11 @@ Store all your bookmarks here !
 # To do ...
 
 * bug on sorting after adding/deleting bookmark
-* edit a link
-* put last deleted link in adding link form
 
 # Changelog
 
+* v0.6
+  * put last deleted link into adding link form
 * v0.5.3
   * show url only once if there is no title
   * icons added

@@ -537,7 +537,10 @@ window.require.define({"views/bookmark_view": function(exports, require, module)
 
     BookmarkView.prototype.onDeleteClicked = function() {
       var _this = this;
-      console.log("clicked");
+      $(".url-field").val(this.$el.find(".title a").attr("href"));
+      $(".title-field").val(this.$el.find(".title a").text());
+      $(".tags-field").val(this.$el.find(".tags").text());
+      $(".description-field").val(this.$el.find(".description").text());
       return this.model.destroy({
         success: function() {
           return _this.destroy();
