@@ -421,13 +421,17 @@ window.require.define({"views/app_view": function(exports, require, module) {
 
     function AppView() {
       this.onCreateClicked = __bind(this.onCreateClicked, this);
+
+      this.onMoreClicked = __bind(this.onMoreClicked, this);
       return AppView.__super__.constructor.apply(this, arguments);
     }
 
     AppView.prototype.el = 'body.application';
 
     AppView.prototype.events = {
-      'click .create-button': 'onCreateClicked'
+      'click .icon-create': 'onCreateClicked',
+      'click .icon-more': 'onMoreClicked',
+      'click .icon-less': 'onMoreClicked'
     };
 
     AppView.prototype.template = function() {
@@ -441,16 +445,6 @@ window.require.define({"views/app_view": function(exports, require, module) {
     AppView.prototype.afterRender = function() {
       var _this = this;
       $(".url-field").focus();
-      $(".icon-more").click(function() {
-        $(".description-field").toggle();
-        if ($(".icon-more").length > 0) {
-          $(".icon-more").addClass("icon-less");
-          return $(".icon-more").removeClass("icon-more");
-        } else {
-          $(".icon-less").addClass("icon-more");
-          return $(".icon-less").removeClass("icon-less");
-        }
-      });
       this.bookmarksView = new BookmarksView();
       this.bookmarksView.$el.html('<em>loading...</em>');
       return this.bookmarksView.collection.fetch({
@@ -464,6 +458,18 @@ window.require.define({"views/app_view": function(exports, require, module) {
       });
     };
 
+    AppView.prototype.onMoreClicked = function(event) {
+      $(".description-field").toggle();
+      if ($(".icon-more").length > 0) {
+        $(".icon-more").addClass("icon-less");
+        $(".icon-more").removeClass("icon-more");
+      } else {
+        $(".icon-less").addClass("icon-more");
+        $(".icon-less").removeClass("icon-less");
+      }
+      return false;
+    };
+
     AppView.prototype.onCreateClicked = function(event) {
       var bookObj, bookmark, description, tags, title, url,
         _this = this;
@@ -473,10 +479,7 @@ window.require.define({"views/app_view": function(exports, require, module) {
         return $.trim(tag);
       });
       description = $('.description-field').val();
-      if ((title != null ? title.length : void 0) === 0) {
-        title = url;
-      }
-      if ((title != null ? title.length : void 0) > 0 && (url != null ? url.length : void 0) > 0) {
+      if ((url != null ? url.length : void 0) > 0) {
         bookObj = {
           title: title,
           url: url,
@@ -591,11 +594,26 @@ window.require.define({"views/templates/bookmark": function(exports, require, mo
   var buf = [];
   with (locals || {}) {
   var interp;
-  buf.push('<span class="icon-delete"></span><div class="title"> <a');
+  buf.push('<button class="icon-delete"></button>');
+  if ( model.title)
+  {
+  buf.push('<div class="title"><a');
   buf.push(attrs({ 'href':("" + (model.url) + "") }, {"href":true}));
-  buf.push('>' + escape((interp = model.title) == null ? '' : interp) + '</a></div><div class="url"><a');
+  buf.push('>' + escape((interp = model.title) == null ? '' : interp) + '</a></div>');
+  }
+  else
+  {
+  buf.push('<div class="title"><a');
   buf.push(attrs({ 'href':("" + (model.url) + "") }, {"href":true}));
-  buf.push('>' + escape((interp = model.url) == null ? '' : interp) + '</a></div><p class="tags">' + escape((interp = model.tags) == null ? '' : interp) + '</p><p class="description">' + escape((interp = model.description) == null ? '' : interp) + '</p>');
+  buf.push('>' + escape((interp = model.url) == null ? '' : interp) + '</a></div>');
+  }
+  if ( model.title)
+  {
+  buf.push('<div class="url"><a');
+  buf.push(attrs({ 'href':("" + (model.url) + "") }, {"href":true}));
+  buf.push('>' + escape((interp = model.url) == null ? '' : interp) + '</a></div>');
+  }
+  buf.push('<p class="tags">' + escape((interp = model.tags) == null ? '' : interp) + '</p><p class="description">' + escape((interp = model.description) == null ? '' : interp) + '</p>');
   }
   return buf.join("");
   };
@@ -607,7 +625,7 @@ window.require.define({"views/templates/home": function(exports, require, module
   var buf = [];
   with (locals || {}) {
   var interp;
-  buf.push('<div id="content"><H1>mY BOOkmarks</H1><form id="create-bookmark-form"><input placeholder="url" class="url-field"/><input placeholder="title" class="title-field"/><input placeholder="tags, separated by \',\'" class="tags-field"/><span title="more" class="icon-more"></span><textarea placeholder="description" class="description-field"></textarea><button title="create" class="create-button icon-create"></button></form><div id="bookmark-list"><input placeholder="search" class="search"/><span data-sort="title" title="sort by title" class="sort icon-sort"></span><ul class="list"></ul></div></div>');
+  buf.push('<div id="content"><H1>mY BOOkmarks</H1><form id="create-bookmark-form"><input placeholder="url" class="url-field"/><input placeholder="title" class="title-field"/><input placeholder="tags, separated by \',\'" class="tags-field"/><input type="button" title="more" class="icon-more"/><textarea placeholder="description" class="description-field"></textarea><button title="create" class="icon-create"></button></form><div id="bookmark-list"><input placeholder="search" class="search"/><button data-sort="title" title="sort by title" class="sort icon-sort"></button><ul class="list"></ul></div></div>');
   }
   return buf.join("");
   };

@@ -5,9 +5,14 @@ Store all your bookmarks here !
 # To do ...
 
 * bug on sorting after adding/deleting bookmark
+* edit a link
+* put last deleted link in adding link form
 
 # Changelog
 
+* v0.5.3
+  * show url only once if there is no title
+  * icons added
 * v0.5.2
   * add create button (submit on hit enter)
   * ordered by last created

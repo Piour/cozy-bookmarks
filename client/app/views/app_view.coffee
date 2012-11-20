@@ -7,7 +7,9 @@ module.exports = class AppView extends View
     el: 'body.application'
 
     events:
-        'click .create-button': 'onCreateClicked'
+        'click .icon-create': 'onCreateClicked'
+        'click .icon-more': 'onMoreClicked'
+        'click .icon-less': 'onMoreClicked'
 
     template: ->
         require './templates/home'
@@ -17,16 +19,6 @@ module.exports = class AppView extends View
 
     afterRender: ->
         $(".url-field").focus()
-        $(".icon-more").click(->
-            $(".description-field").toggle()
-            if $(".icon-more").length > 0
-                $(".icon-more").addClass("icon-less")
-                $(".icon-more").removeClass("icon-more")
-            else
-                $(".icon-less").addClass("icon-more")
-                $(".icon-less").removeClass("icon-less")
-        )
-
         @bookmarksView = new BookmarksView()
 
         @bookmarksView.$el.html '<em>loading...</em>'
@@ -38,15 +30,23 @@ module.exports = class AppView extends View
                 window.featureList = new List("bookmark-list",
                                               window.sortOptions)
 
+    onMoreClicked: (event) =>
+        $(".description-field").toggle()
+        if $(".icon-more").length > 0
+            $(".icon-more").addClass("icon-less")
+            $(".icon-more").removeClass("icon-more")
+        else
+            $(".icon-less").addClass("icon-more")
+            $(".icon-less").removeClass("icon-less")
+        false
+
     onCreateClicked: (event) =>
         url = $('.url-field').val()
         title = $('.title-field').val()
         tags = $('.tags-field').val().split(',').map (tag) -> $.trim(tag)
         description = $('.description-field').val()
 
-        if title?.length == 0
-            title = url
-        if title?.length > 0 and url?.length > 0
+        if url?.length > 0
             bookObj =
                 title: title
                 url: url

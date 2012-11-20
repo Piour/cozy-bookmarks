@@ -884,6 +884,10 @@ a:visited {
 #content {
   padding: 2em;
 }
+button,
+input[type=button] {
+  background-color: inherit;
+}
 [class^="icon-"],
 [class*=" icon-"] {
   background-image: url("../images/glyphicons-halflings.png");
@@ -915,6 +919,11 @@ a:visited {
   margin: 1em;
   width: 24em;
 }
+#create-bookmark-form input[type=button] {
+  width: 14px;
+  height: 14px;
+  padding: 10px 15px;
+}
 #create-bookmark-form textarea {
   display: block;
   display: none;
@@ -925,9 +934,6 @@ a:visited {
 #create-bookmark-form .url-field {
   display: inline-block;
   width: 50em;
-}
-#create-bookmark-form button {
-  background-color: inherit;
 }
 #create-bookmark-form .icon-create {
   background-position: -280px 3px;
