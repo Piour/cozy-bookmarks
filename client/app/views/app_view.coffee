@@ -18,9 +18,13 @@ module.exports = class AppView extends View
     afterRender: ->
         $(".url-field").focus()
         $(".icon-more").click(->
-            $(".title-field").toggle()
-            $(".tags-field").toggle()
             $(".description-field").toggle()
+            if $(".icon-more").length > 0
+                $(".icon-more").addClass("icon-less")
+                $(".icon-more").removeClass("icon-more")
+            else
+                $(".icon-less").addClass("icon-more")
+                $(".icon-less").removeClass("icon-less")
         )
 
         @bookmarksView = new BookmarksView()
@@ -53,5 +57,5 @@ module.exports = class AppView extends View
                 success: =>
                 error: => alert "Server error occured, bookmark was not saved"
         else
-            alert 'Both fields are required'
+            alert 'Url field is required'
         false

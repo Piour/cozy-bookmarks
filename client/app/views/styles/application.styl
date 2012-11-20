@@ -31,10 +31,17 @@ a, a:visited
     line-height: 14px
     width: 14px
     vertical-align: text-top
+    cursor: pointer
+    border-radius: 10px 10px 10px 10px
+    cursor: pointer
+    padding: 10px 15px
+    border: 1px solid #666
 
 .icon-more
-    background-position: -314px -120px
-    cursor: pointer
+    background-position: -305px -116px
+
+.icon-less
+    background-position: -280px -117px
 
 #create-bookmark-form
     padding: 0 2em
@@ -42,7 +49,6 @@ a, a:visited
         padding: .5em
         margin: 1em
         width: 24em
-        display: none
     textarea
         display: block
         display: none
@@ -52,9 +58,11 @@ a, a:visited
     .url-field
         display: inline-block
         width: 50em
-    .btn
+    button
+        background-color: inherit 
+    .icon-create
+        background-position: -280px 3px
         display: block
-        padding: .5em
         margin: 1em
 
 .search
@@ -62,14 +70,13 @@ a, a:visited
     margin: 1em
     width: 24em
 
-.sort, button
-    color: #bbb
-    border: 1px solid #666
-    border-radius: 10px 10px 10px 10px
-    cursor: pointer
+.icon-sort
     margin-right: 5px
-    padding: 5px 10px
-    background: transparent
+    background-position: -209px -116px
+.icon-sort:before
+    content ""
+.icon-delete
+    background-position: -304px 3px
 
 #bookmark-list
     padding: 2em

@@ -2,14 +2,13 @@
     H1 mY BOOkmarks
     form#create-bookmark-form
         input.url-field(placeholder="url")
-        span.icon-more
-        br
         input.title-field(placeholder="title")
         input.tags-field(placeholder="tags, separated by ','")
+        span.icon-more(title="more")
         textarea.description-field(placeholder="description")
-        button.btn.create-button create
+        button.create-button.icon-create(title="create")
     div#bookmark-list
         input.search(placeholder="search")
-        span.sort(data-sort="title") sort
+        span.sort.icon-sort(data-sort="title", title="sort by title")
         ul.list
 

@@ -5,7 +5,7 @@ module.exports = class BookmarkView extends View
     tagName: 'li'
 
     events:
-        'click .delete-button': 'onDeleteClicked'
+        'click .icon-delete': 'onDeleteClicked'
 
     constructor: (@model) ->
         super()
@@ -16,7 +16,6 @@ module.exports = class BookmarkView extends View
 
     onDeleteClicked: ->
         console.log("clicked")
-        @$('.delete-button').html "deleting..."
         @model.destroy
             success: =>
                 @destroy()
