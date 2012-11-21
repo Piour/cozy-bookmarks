@@ -536,14 +536,17 @@ window.require.define({"views/bookmark_view": function(exports, require, module)
     };
 
     BookmarkView.prototype.onDeleteClicked = function() {
-      var _this = this;
+      var title,
+        _this = this;
+      title = this.$el.find(".title").html();
       $(".url-field").val(this.$el.find(".title a").attr("href"));
       $(".title-field").val(this.$el.find(".title a").text());
       $(".tags-field").val(this.$el.find(".tags").text());
       $(".description-field").val(this.$el.find(".description").text());
       return this.model.destroy({
         success: function() {
-          return _this.destroy();
+          _this.destroy();
+          return window.featureList.remove("title", title);
         },
         error: function() {
           alert("Server error occured, bookmark was not deleted.");
@@ -560,6 +563,7 @@ window.require.define({"views/bookmark_view": function(exports, require, module)
 
 window.require.define({"views/bookmarks_view": function(exports, require, module) {
   var BookmarkCollection, BookmarkView, BookmarksView, ViewCollection,
+    __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
     __hasProp = {}.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
@@ -574,12 +578,29 @@ window.require.define({"views/bookmarks_view": function(exports, require, module
     __extends(BookmarksView, _super);
 
     function BookmarksView() {
+      this.renderOne = __bind(this.renderOne, this);
       return BookmarksView.__super__.constructor.apply(this, arguments);
     }
 
     BookmarksView.prototype.el = '#bookmark-list .list';
 
     BookmarksView.prototype.view = BookmarkView;
+
+    BookmarksView.prototype.renderOne = function(model) {
+      var sortObj, view;
+      view = new this.view(model);
+      this.$el.prepend(view.render().el);
+      this.add(view);
+      if (window.featureList) {
+        console.log(view);
+        sortObj = {
+          "el": view.el,
+          "values": window.sortOptions.valueNames
+        };
+        window.featureList.add(sortObj);
+      }
+      return this;
+    };
 
     BookmarksView.prototype.initialize = function() {
       return this.collection = new BookmarkCollection(this);

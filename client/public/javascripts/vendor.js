@@ -15720,13 +15720,19 @@ var List = function(id, options, values) {
                 item = values[i];
                 item.reload();
             } else {
-                notCreate = (self.items.length > self.page) ? true : false;
-                item = new Item(values[i], undefined, notCreate);
+                if (values[i].el !== undefined) {
+                    item = new Item(values[i].values, 
+                                    values[i].el, 
+                                    true);
+                } else {
+                    notCreate = (self.items.length > self.page) ? true : false;
+                    item = new Item(values[i], undefined, notCreate);
+                }
             }
             self.items.push(item);
             added.push(item);
         }
-        self.update();
+        //self.update();
         return added;
     };
 
@@ -16129,7 +16135,10 @@ List.prototype.templateEngines.standard = function(list, settings) {
         templater.set(item, item.values());
     };
     this.remove = function(item) {
-        listSource.removeChild(item.elm);
+        try {
+            listSource.removeChild(item.elm);
+        } catch (e) {
+        }
     };
     this.show = function(item) {
         ensure.created(item);

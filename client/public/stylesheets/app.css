@@ -873,12 +873,11 @@ body.application,
 input,
 textarea {
   color: #bbb;
-  text-shadow: 0 -1px 0 #262729;
   background: none repeat scroll 0 0 rgba(30,30,30,0.8);
 }
 a,
 a:visited {
-  color: #bbb;
+  color: #27aaf2;
   text-decoration: none;
 }
 #content {
@@ -903,7 +902,7 @@ input[type=button] {
   border-radius: 10px 10px 10px 10px;
   cursor: pointer;
   padding: 10px 15px;
-  border: 1px solid #666;
+  border: 2px solid #666;
 }
 .icon-more {
   background-position: -305px -116px;
@@ -918,11 +917,13 @@ input[type=button] {
   padding: 0.5em;
   margin: 1em;
   width: 24em;
+  display: block;
 }
 #create-bookmark-form input[type=button] {
   width: 14px;
   height: 14px;
   padding: 10px 15px;
+  display: inline-block;
 }
 #create-bookmark-form textarea {
   display: block;
@@ -932,8 +933,11 @@ input[type=button] {
   width: 50em;
 }
 #create-bookmark-form .url-field {
-  display: inline-block;
   width: 50em;
+}
+#create-bookmark-form .tags-field,
+#create-bookmark-form .title-field {
+  display: inline-block;
 }
 #create-bookmark-form .icon-create {
   background-position: -280px 3px;
@@ -977,11 +981,6 @@ input[type=button] {
 }
 #bookmark-list .bookmark .title {
   font-weight: bold;
-}
-#bookmark-list .bookmark .title a,
-#bookmark-list .bookmark .title a:visited {
-  color: #01dbff;
-  text-decoration: none;
 }
 .chromeframe { margin: 0.2em 0; background: #ccc; color: #000; padding: 0.2em 0; }
 .ir { display: block; border: 0; text-indent: -999em; overflow: hidden; background-color: transparent; background-repeat: no-repeat; text-align: left; direction: ltr; *line-height: 0; }

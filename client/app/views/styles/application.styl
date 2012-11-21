@@ -12,11 +12,10 @@
 
 body.application, input, textarea
     color: #bbb
-    text-shadow: 0 -1px 0 #262729
     background: none repeat scroll 0 0 rgba(30, 30, 30, 0.8)
 
 a, a:visited
-    color: #bbb
+    color: #27aaf2
     text-decoration: none
 
 #content
@@ -39,7 +38,7 @@ button, input[type=button]
     border-radius: 10px 10px 10px 10px
     cursor: pointer
     padding: 10px 15px
-    border: 1px solid #666
+    border: 2px solid #666
 
 .icon-more
     background-position: -305px -116px
@@ -53,10 +52,12 @@ button, input[type=button]
         padding: .5em
         margin: 1em
         width: 24em
+        display: block
     input[type=button]
         width: 14px
         height: 14px
         padding: 10px 15px
+        display: inline-block
     textarea
         display: block
         display: none
@@ -64,8 +65,9 @@ button, input[type=button]
         margin: 1em
         width: 50em
     .url-field
-        display: inline-block
         width: 50em
+    .tags-field, .title-field
+        display: inline-block
     .icon-create
         background-position: -280px 3px
         display: block
@@ -103,6 +105,3 @@ button, input[type=button]
 
         .title
             font-weight: bold
-            a, a:visited
-                color: #01DBFF
-                text-decoration: none

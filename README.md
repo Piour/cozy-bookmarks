@@ -4,10 +4,12 @@ Store all your bookmarks here !
 
 # To do ...
 
-* bug on sorting after adding/deleting bookmark
+* review listjs use
 
 # Changelog
 
+* v0.6.1
+  * solved bug on sorting after adding/deleting bookmark : need more work
 * v0.6
   * put last deleted link into adding link form
 * v0.5.3
