@@ -35,9 +35,11 @@ module.exports = class AppView extends View
         if $(".icon-more").length > 0
             $(".icon-more").addClass("icon-less")
             $(".icon-more").removeClass("icon-more")
+            $(".icon-less").attr("title", "less")
         else
             $(".icon-less").addClass("icon-more")
             $(".icon-less").removeClass("icon-less")
+            $(".icon-more").attr("title", "more")
         false
 
     onCreateClicked: (event) =>

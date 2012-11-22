@@ -8,6 +8,8 @@ Store all your bookmarks here !
 
 # Changelog
 
+* v0.6.2
+  * use of ellipsis for too longs urls and minor display changes
 * v0.6.1
   * solved bug on sorting after adding/deleting bookmark : need more work
 * v0.6

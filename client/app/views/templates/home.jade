@@ -1,11 +1,13 @@
 #content
     H1 mY BOOkmarks
     form#create-bookmark-form
-        input.url-field(placeholder="url")
-        input.title-field(placeholder="title")
-        input.tags-field(placeholder="tags, separated by ','")
-        input.icon-more(type="button", title="more")
-        textarea.description-field(placeholder="description")
+        p
+            input.url-field(placeholder="url")
+            input.title-field(placeholder="title")
+            input.tags-field(placeholder="tags, separated by ','")
+            input.icon-more(type="button", title="more")
+        p
+            textarea.description-field(placeholder="description")
         button.icon-create(title="create")
     div#bookmark-list
         input.search(placeholder="search")

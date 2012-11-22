@@ -12,7 +12,6 @@ module.exports = class BookmarksView extends ViewCollection
         @$el.prepend view.render().el
         @add view
         if window.featureList
-            console.log(view)
             sortObj = { "el": view.el, "values": window.sortOptions.valueNames }
             window.featureList.add(sortObj)
         @

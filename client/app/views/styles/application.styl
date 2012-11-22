@@ -97,11 +97,25 @@ button, input[type=button]
 
     .bookmark
         margin: 1em 0
-        div, p
+        table-row
+        div, a
             padding: .5em
             margin: 1em
-            width: 24em
-            display: inline
-
+            display: table-cell
+        .buttons
+            width: 20px
         .title
             font-weight: bold
+        .url
+            max-width: 20em
+            overflow: hidden
+            text-overflow: ellipsis
+            white-space: nowrap
+        .url:hover
+            max-width: none
+            overflow: normal
+            text-overflow: inherit
+        .tags
+            max-width: 20%
+        .description
+            margin: 20px

@@ -463,9 +463,11 @@ window.require.define({"views/app_view": function(exports, require, module) {
       if ($(".icon-more").length > 0) {
         $(".icon-more").addClass("icon-less");
         $(".icon-more").removeClass("icon-more");
+        $(".icon-less").attr("title", "less");
       } else {
         $(".icon-less").addClass("icon-more");
         $(".icon-less").removeClass("icon-less");
+        $(".icon-more").attr("title", "more");
       }
       return false;
     };
@@ -592,7 +594,6 @@ window.require.define({"views/bookmarks_view": function(exports, require, module
       this.$el.prepend(view.render().el);
       this.add(view);
       if (window.featureList) {
-        console.log(view);
         sortObj = {
           "el": view.el,
           "values": window.sortOptions.valueNames
@@ -618,7 +619,7 @@ window.require.define({"views/templates/bookmark": function(exports, require, mo
   var buf = [];
   with (locals || {}) {
   var interp;
-  buf.push('<button class="icon-delete"></button>');
+  buf.push('<div class="buttons"><button class="icon-delete"></button></div>');
   if ( model.title)
   {
   buf.push('<div class="title"><a');
@@ -631,13 +632,17 @@ window.require.define({"views/templates/bookmark": function(exports, require, mo
   buf.push(attrs({ 'href':("" + (model.url) + "") }, {"href":true}));
   buf.push('>' + escape((interp = model.url) == null ? '' : interp) + '</a></div>');
   }
+  buf.push('<div class="tags">' + escape((interp = model.tags) == null ? '' : interp) + '</div>');
   if ( model.title)
   {
-  buf.push('<div class="url"><a');
-  buf.push(attrs({ 'href':("" + (model.url) + "") }, {"href":true}));
-  buf.push('>' + escape((interp = model.url) == null ? '' : interp) + '</a></div>');
+  buf.push('<a');
+  buf.push(attrs({ 'href':("" + (model.url) + ""), "class": ('url') }, {"href":true}));
+  buf.push('>' + escape((interp = model.url) == null ? '' : interp) + '</a>');
   }
-  buf.push('<p class="tags">' + escape((interp = model.tags) == null ? '' : interp) + '</p><p class="description">' + escape((interp = model.description) == null ? '' : interp) + '</p>');
+  if ( model.description)
+  {
+  buf.push('<p class="description">' + escape((interp = model.description) == null ? '' : interp) + '</p>');
+  }
   }
   return buf.join("");
   };
@@ -649,7 +654,7 @@ window.require.define({"views/templates/home": function(exports, require, module
   var buf = [];
   with (locals || {}) {
   var interp;
-  buf.push('<div id="content"><H1>mY BOOkmarks</H1><form id="create-bookmark-form"><input placeholder="url" class="url-field"/><input placeholder="title" class="title-field"/><input placeholder="tags, separated by \',\'" class="tags-field"/><input type="button" title="more" class="icon-more"/><textarea placeholder="description" class="description-field"></textarea><button title="create" class="icon-create"></button></form><div id="bookmark-list"><input placeholder="search" class="search"/><button data-sort="title" title="sort by title" class="sort icon-sort"></button><ul class="list"></ul></div></div>');
+  buf.push('<div id="content"><H1>mY BOOkmarks</H1><form id="create-bookmark-form"><p><input placeholder="url" class="url-field"/><input placeholder="title" class="title-field"/><input placeholder="tags, separated by \',\'" class="tags-field"/><input type="button" title="more" class="icon-more"/></p><p><textarea placeholder="description" class="description-field"></textarea></p><button title="create" class="icon-create"></button></form><div id="bookmark-list"><input placeholder="search" class="search"/><button data-sort="title" title="sort by title" class="sort icon-sort"></button><ul class="list"></ul></div></div>');
   }
   return buf.join("");
   };
