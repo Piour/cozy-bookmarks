@@ -490,7 +490,9 @@ window.require.define({"views/app_view": function(exports, require, module) {
         };
         bookmark = new Bookmark(bookObj);
         this.bookmarksView.collection.create(bookmark, {
-          success: function() {},
+          success: function() {
+            return $("#create-bookmark-form").find("input, textarea").val("");
+          },
           error: function() {
             return alert("Server error occured, bookmark was not saved");
           }

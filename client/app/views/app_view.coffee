@@ -43,9 +43,9 @@ module.exports = class AppView extends View
         false
 
     onCreateClicked: (event) =>
-        url = $('.url-field').val()
+        url   = $('.url-field').val()
         title = $('.title-field').val()
-        tags = $('.tags-field').val().split(',').map (tag) -> $.trim(tag)
+        tags  = $('.tags-field').val().split(',').map (tag) -> $.trim(tag)
         description = $('.description-field').val()
 
         if url?.length > 0
@@ -57,6 +57,7 @@ module.exports = class AppView extends View
             bookmark = new Bookmark bookObj
             @bookmarksView.collection.create bookmark,
                 success: =>
+                    $("#create-bookmark-form").find("input, textarea").val("")
                 error: => alert "Server error occured, bookmark was not saved"
         else
             alert 'Url field is required'

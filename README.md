@@ -5,19 +5,21 @@ Store all your bookmarks here !
 # To do ...
 
 * review listjs use
+* choose the sorting fields
+* tag helper
 
 # Changelog
 
+* v0.6.3
+  * clean form after adding a bookmark
 * v0.6.2
   * use of ellipsis for too longs urls and minor display changes
 * v0.6.1
   * solved bug on sorting after adding/deleting bookmark : need more work
 * v0.6
   * put last deleted link into adding link form
-* v0.5.3
   * show url only once if there is no title
   * icons added
-* v0.5.2
   * add create button (submit on hit enter)
   * ordered by last created
 * v0.5
