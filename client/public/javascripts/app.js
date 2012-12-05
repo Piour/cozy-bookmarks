@@ -656,7 +656,7 @@ window.require.define({"views/templates/home": function(exports, require, module
   var buf = [];
   with (locals || {}) {
   var interp;
-  buf.push('<div id="content"><H1>mY BOOkmarks</H1><form id="create-bookmark-form"><p><input placeholder="url" class="url-field"/><input placeholder="title" class="title-field"/><input placeholder="tags, separated by \',\'" class="tags-field"/><input type="button" title="more" class="icon-more"/></p><p><textarea placeholder="description" class="description-field"></textarea></p><button title="create" class="icon-create"></button></form><div id="bookmark-list"><input placeholder="search" class="search"/><button data-sort="title" title="sort by title" class="sort icon-sort"></button><ul class="list"></ul></div></div>');
+  buf.push('<div id="content"><h1>mY BOOkmarks</h1><form id="create-bookmark-form"><p><input placeholder="url" class="url-field"/><input placeholder="title" class="title-field"/><input placeholder="tags, separated by \',\'" class="tags-field"/><input type="button" title="more" class="icon-more"/></p><p><textarea placeholder="description" class="description-field"></textarea></p><button title="create" class="icon-create"></button></form><div id="bookmark-list"><input placeholder="search" class="search"/><button data-sort="title" title="sort by title" class="sort icon-sort"></button><ul class="list"></ul></div></div>');
   }
   return buf.join("");
   };

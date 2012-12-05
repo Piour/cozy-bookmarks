@@ -12,6 +12,7 @@ Store all your bookmarks here !
 
 * v0.6.3
   * clean form after adding a bookmark
+  * minor style changes
 * v0.6.2
   * use of ellipsis for too longs urls and minor display changes
 * v0.6.1

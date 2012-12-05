@@ -959,6 +959,9 @@ input[type=button] {
 .icon-delete {
   background-position: -304px 3px;
 }
+.icon-delete:hover {
+  border-color: #700;
+}
 #bookmark-list {
   padding: 2em;
 }
