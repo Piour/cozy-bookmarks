@@ -453,7 +453,8 @@ window.require.define({"views/app_view": function(exports, require, module) {
           window.sortOptions = {
             "valueNames": ["title", "url", "tags", "description"]
           };
-          return window.featureList = new List("bookmark-list", window.sortOptions);
+          window.featureList = new List("bookmark-list", window.sortOptions);
+          return alertify.log("bookmarks loaded");
         }
       });
     };
@@ -491,7 +492,8 @@ window.require.define({"views/app_view": function(exports, require, module) {
         bookmark = new Bookmark(bookObj);
         this.bookmarksView.collection.create(bookmark, {
           success: function() {
-            return $("#create-bookmark-form").find("input, textarea").val("");
+            $("#create-bookmark-form").find("input, textarea").val("");
+            return alertify.log("" + _this.$el.find(".title").html() + " added");
           },
           error: function() {
             return alert("Server error occured, bookmark was not saved");
@@ -550,7 +552,8 @@ window.require.define({"views/bookmark_view": function(exports, require, module)
       return this.model.destroy({
         success: function() {
           _this.destroy();
-          return window.featureList.remove("title", title);
+          window.featureList.remove("title", title);
+          return alertify.log("" + title + " removed and placed in form");
         },
         error: function() {
           alert("Server error occured, bookmark was not deleted.");

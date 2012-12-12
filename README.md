@@ -10,6 +10,8 @@ Store all your bookmarks here !
 
 # Changelog
 
+* v0.6.4
+  * use of alertify.js
 * v0.6.3
   * clean form after adding a bookmark
   * minor style changes

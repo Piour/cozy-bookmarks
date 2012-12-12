@@ -29,6 +29,7 @@ module.exports = class AppView extends View
                     "valueNames": ["title", "url", "tags", "description"] }
                 window.featureList = new List("bookmark-list",
                                               window.sortOptions)
+                alertify.log "bookmarks loaded"
 
     onMoreClicked: (event) =>
         $(".description-field").toggle()
@@ -58,6 +59,7 @@ module.exports = class AppView extends View
             @bookmarksView.collection.create bookmark,
                 success: =>
                     $("#create-bookmark-form").find("input, textarea").val("")
+                    alertify.log "" + @$el.find(".title").html() + " added"
                 error: => alert "Server error occured, bookmark was not saved"
         else
             alert 'Url field is required'
