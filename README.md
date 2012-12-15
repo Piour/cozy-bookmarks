@@ -2,6 +2,8 @@
 
 Store all your bookmarks here !
 
+main icon from : http://www.iconfinder.com/icondetails/470/22/
+
 # To do ...
 
 * review listjs use
@@ -10,6 +12,8 @@ Store all your bookmarks here !
 
 # Changelog
 
+* v0.6.5
+  * new main icon
 * v0.6.4
   * use of alertify.js
 * v0.6.3
