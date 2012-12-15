@@ -2,7 +2,7 @@
 
 Store all your bookmarks here !
 
-main icon from : http://www.iconfinder.com/icondetails/470/22/
+main icon from : http://www.iconfinder.com/icondetails/35406/128/favorites_icontexto_inside_icon
 
 # To do ...
 
