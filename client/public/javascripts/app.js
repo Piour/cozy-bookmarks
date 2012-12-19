@@ -628,7 +628,7 @@ window.require.define({"views/templates/bookmark": function(exports, require, mo
   var buf = [];
   with (locals || {}) {
   var interp;
-  buf.push('<div class="buttons"><button title="click to remove this link from saved bookmarks and place its details into the form" class="delete"><img src="/icons/delete.png" alt="delete"/></button></div>');
+  buf.push('<div class="buttons"><button title="click to remove this link from saved bookmarks and place its details into the form" class="delete"><img src="icons/delete.png" alt="delete"/></button></div>');
   if ( model.title)
   {
   buf.push('<div class="title"><a');
@@ -663,7 +663,7 @@ window.require.define({"views/templates/home": function(exports, require, module
   var buf = [];
   with (locals || {}) {
   var interp;
-  buf.push('<div id="content"><form id="create-bookmark-form"><h1 title="click to hide the form" class="title">Bookmark a link</h1><div><p><input placeholder="url" class="url-field"/><input placeholder="title" class="title-field"/><input placeholder="tags, separated by \',\'" class="tags-field"/></p><p class="last"><textarea placeholder="description" class="description-field"></textarea></p><div class="buttons"><button title="click here to store the bookmark" class="create"><img src="/icons/add.png" alt="add"/></button><button title="click to clean the form" class="clean"><img src="/icons/clean.png" alt="clean"/></button></div></div></form><div id="bookmark-list"><h1 class="title">mY BOOkmarks</h1><div class="tools"><input placeholder="search" class="search"/><button title="click to sort links" data-sort="title" class="sort descending"><img src="/icons/sort-descending.png" alt="sort"/></button></div><ul class="list"></ul></div></div>');
+  buf.push('<div id="content"><form id="create-bookmark-form"><h1 title="click to hide the form" class="title">Bookmark a link</h1><div><p><input placeholder="url" class="url-field"/><input placeholder="title" class="title-field"/><input placeholder="tags, separated by \',\'" class="tags-field"/></p><p class="last"><textarea placeholder="description" class="description-field"></textarea></p><div class="buttons"><button title="click here to store the bookmark" class="create"><img src="icons/add.png" alt="add"/></button><button title="click to clean the form" class="clean"><img src="icons/clean.png" alt="clean"/></button></div></div></form><div id="bookmark-list"><h1 class="title">mY BOOkmarks</h1><div class="tools"><input placeholder="search" class="search"/><button title="click to sort links" data-sort="title" class="sort descending"><img src="icons/sort-descending.png" alt="sort"/></button></div><ul class="list"></ul></div></div>');
   }
   return buf.join("");
   };
