@@ -1,20 +1,20 @@
-View = require '../lib/view'
+View = require "../lib/view"
 
 module.exports = class BookmarkView extends View
-    className: 'bookmark'
-    tagName: 'li'
+    className: "bookmark"
+    tagName: "li"
 
     events:
-        'click .icon-delete': 'onDeleteClicked'
+        "click .delete": "deleteBookmark"
 
     constructor: (@model) ->
         super()
     
     template: ->
-        template = require './templates/bookmark'
+        template = require "./templates/bookmark"
         template @getRenderData()
 
-    onDeleteClicked: ->
+    deleteBookmark: ->
         title = @$el.find(".title").html()
         $(".url-field").val(@$el.find(".title a").attr("href"))
         $(".title-field").val(@$el.find(".title a").text())
@@ -26,5 +26,5 @@ module.exports = class BookmarkView extends View
                 window.featureList.remove("title", title)
                 alertify.log "" + title + " removed and placed in form"
             error: =>
-                alert "Server error occured, bookmark was not deleted."
+                alertify.alert "Server error occured, bookmark was not deleted."
                 @$('.delete-button').html "delete"

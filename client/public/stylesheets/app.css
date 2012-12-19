@@ -471,19 +471,16 @@ table {
 /**
  * Default Look and Feel
  */
-.alertify,
-.alertify-log {
-	font-family: sans-serif;
-}
 .alertify {
-	background: #FFF;
-	border: 10px solid #333; /* browsers that don't support rgba */
-	border: 10px solid rgba(0,0,0,.7);
-	border-radius: 8px;
+	background: #1F1F1F;
+	background: rgba(0,0,0,.9);
 	box-shadow: 0 3px 3px rgba(0,0,0,.3);
 	-webkit-background-clip: padding;     /* Safari 4? Chrome 6? */
 	   -moz-background-clip: padding;     /* Firefox 3.6 */
 	        background-clip: padding-box; /* Firefox 4, Safari 5, Opera 10, IE 9 */
+}
+.alertify a:hover {
+    text-decoration: none;
 }
 .alertify-text {
 	border: 1px solid #CCC;
@@ -491,41 +488,27 @@ table {
 	border-radius: 4px;
 }
 .alertify-button {
-	border-radius: 4px;
+    border-radius: 10px;
 	color: #FFF;
 	font-weight: bold;
 	padding: 6px 15px;
 	text-decoration: none;
-	text-shadow: 1px 1px 0 rgba(0,0,0,.5);
-	box-shadow: inset 0 1px 0 0 rgba(255,255,255,.5);
-	background-image: -webkit-linear-gradient(top, rgba(255,255,255,.3), rgba(255,255,255,0));
-	background-image:    -moz-linear-gradient(top, rgba(255,255,255,.3), rgba(255,255,255,0));
-	background-image:     -ms-linear-gradient(top, rgba(255,255,255,.3), rgba(255,255,255,0));
-	background-image:      -o-linear-gradient(top, rgba(255,255,255,.3), rgba(255,255,255,0));
-	background-image:         linear-gradient(top, rgba(255,255,255,.3), rgba(255,255,255,0));
 }
-.alertify-button:hover,
-.alertify-button:focus {
+.alertify-button:hover {
 	outline: none;
 	box-shadow: 0 0 15px #2B72D5;
-	background-image: -webkit-linear-gradient(top, rgba(0,0,0,.1), rgba(0,0,0,0));
-	background-image:    -moz-linear-gradient(top, rgba(0,0,0,.1), rgba(0,0,0,0));
-	background-image:     -ms-linear-gradient(top, rgba(0,0,0,.1), rgba(0,0,0,0));
-	background-image:      -o-linear-gradient(top, rgba(0,0,0,.1), rgba(0,0,0,0));
-	background-image:         linear-gradient(top, rgba(0,0,0,.1), rgba(0,0,0,0));
 }
 .alertify-button:active {
 	position: relative;
 	top: 1px;
 }
-	.alertify-button-cancel {
-		background-color: #FE1A00;
-		border: 1px solid #D83526;
-	}
-	.alertify-button-ok {
-		background-color: #5CB811;
-		border: 1px solid #3B7808;
-	}
+.alertify-button-cancel {
+    background-color: #FE1A00;
+    border: 1px solid #D83526;
+}
+.alertify-button-ok {
+    color: #5CB811;
+}
 .alertify-log {
 	background: #1F1F1F;
 	background: rgba(0,0,0,.9);
@@ -534,14 +517,15 @@ table {
 	color: #FFF;
 	text-shadow: -1px -1px 0 rgba(0,0,0,.5);
 }
-	.alertify-log-error {
-		background: #FE1A00;
-		background: rgba(254,26,0,.9);
-	}
-	.alertify-log-success {
-		background: #5CB811;
-		background: rgba(92,184,17,.9);
-	}/*  Font Awesome
+.alertify-log-error {
+    background: #FE1A00;
+    background: rgba(254,26,0,.9);
+}
+.alertify-log-success {
+    background: #5CB811;
+    background: rgba(92,184,17,.9);
+}
+/*  Font Awesome
     the iconic font designed for use with Twitter Bootstrap
     -------------------------------------------------------
     The full suite of pictographic icons, examples, and documentation
@@ -1043,62 +1027,51 @@ textarea {
   color: #bbb;
   background: none repeat scroll 0 0 rgba(30,30,30,0.8);
 }
+#content {
+  padding: 2em;
+}
 a,
 a:visited {
   color: #27aaf2;
   text-decoration: none;
 }
-#content {
-  padding: 2em;
+a:focus {
+  outline: none;
 }
-button,
-input[type=button] {
+button {
   background-color: inherit;
 }
-[class^="icon-"],
-[class*=" icon-"] {
-  background-image: url("../images/glyphicons-halflings.png");
-  background-position: 14px 14px;
-  background-repeat: no-repeat;
-  display: inline-block;
-  height: 14px;
-  line-height: 14px;
-  width: 14px;
-  vertical-align: text-top;
-  cursor: pointer;
-  -webkit-border-radius: 10px 10px 10px 10px;
-  border-radius: 10px 10px 10px 10px;
-  cursor: pointer;
-  padding: 10px 15px;
-  border: 2px solid #666;
-}
-.icon-more {
-  background-position: -305px -116px;
-}
-.icon-less {
-  background-position: -280px -117px;
-}
 #create-bookmark-form {
+  margin: 0;
   padding: 0 2em;
+  background: #222;
+  border: 1px solid #262626;
+}
+#create-bookmark-form h1 {
+  cursor: pointer;
+  background: #1c1c1c;
+  border-top: 1px solid #262626;
+  border-bottom: 1px solid #161712;
+  padding: 0.3em;
+}
+#create-bookmark-form p.last {
+  display: inline-block;
 }
 #create-bookmark-form input {
-  padding: 0.5em;
-  margin: 1em;
-  width: 24em;
   display: block;
-}
-#create-bookmark-form input[type=button] {
-  width: 14px;
-  height: 14px;
-  padding: 10px 15px;
-  display: inline-block;
+  margin: 1em;
+  padding: 0.5em;
+  width: 24em;
+  background: #262626;
+  border: 1px double #171717;
 }
 #create-bookmark-form textarea {
   display: block;
-  display: none;
-  padding: 0.5em;
   margin: 1em;
+  padding: 0.5em;
   width: 50em;
+  background: #262626;
+  border: 1px double #171717;
 }
 #create-bookmark-form .url-field {
   width: 50em;
@@ -1107,31 +1080,46 @@ input[type=button] {
 #create-bookmark-form .title-field {
   display: inline-block;
 }
-#create-bookmark-form .icon-create {
-  background-position: -280px 3px;
-  display: block;
-  margin: 1em;
+#create-bookmark-form .buttons {
+  display: inline-block;
+  vertical-align: bottom;
+  margin-bottom: 1em;
+  padding-bottom: 1em;
 }
-.search {
-  padding: 0.5em;
-  margin: 1em;
-  width: 24em;
+#create-bookmark-form .buttons button {
+  border: none;
 }
-.icon-sort {
-  margin-right: 5px;
-  background-position: -209px -116px;
-}
-.icon-sort:before {
-  content: "";
-}
-.icon-delete {
-  background-position: -304px 3px;
-}
-.icon-delete:hover {
-  border-color: #700;
+#create-bookmark-form .buttons button.clean img {
+  width: 32px;
+  height: 32px;
 }
 #bookmark-list {
-  padding: 2em;
+  margin: 2em 0;
+  padding: 0 2em;
+  background: #222;
+  border: 1px solid #262626;
+}
+#bookmark-list h1 {
+  background: #1c1c1c;
+  border-top: 1px solid #262626;
+  border-bottom: 1px solid #161712;
+  padding: 0.3em;
+}
+#bookmark-list .tools .search {
+  display: inline-block;
+  margin: 1em;
+  padding: 0.5em;
+  width: 24em;
+  background: #262626;
+  border: 1px double #171717;
+}
+#bookmark-list .sort {
+  vertical-align: middle;
+  border: none;
+}
+#bookmark-list .sort img {
+  height: 32px;
+  width: 32px;
 }
 #bookmark-list ul {
   list-style: none;
@@ -1143,15 +1131,19 @@ input[type=button] {
 #bookmark-list .bookmark {
   margin: 0.5em 0;
 }
-#bookmark-list .bookmark table-row,
 #bookmark-list .bookmark div,
 #bookmark-list .bookmark a {
   padding: 0.5em;
   margin: 0.5em;
   display: table-cell;
 }
-#bookmark-list .bookmark .buttons {
-  width: 20px;
+#bookmark-list .bookmark .buttons button {
+  vertical-align: top;
+  border: none;
+}
+#bookmark-list .bookmark .buttons button img {
+  height: 32px;
+  width: 32px;
 }
 #bookmark-list .bookmark .title {
   font-weight: bold;

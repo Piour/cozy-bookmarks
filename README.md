@@ -2,8 +2,6 @@
 
 Store all your bookmarks here !
 
-main icon from : http://www.iconfinder.com/icondetails/35406/128/favorites_icontexto_inside_icon
-
 # To do ...
 
 * review listjs use
@@ -12,6 +10,8 @@ main icon from : http://www.iconfinder.com/icondetails/35406/128/favorites_icont
 
 # Changelog
 
+* v0.6.6
+  * new styles
 * v0.6.5
   * new main icon
 * v0.6.4
@@ -43,3 +43,11 @@ efficiently your data while protecting your privacy without technical skills.
 
 More informations and hosting services on:
 http://cozycloud.cc
+
+# Tools & resources used :
+
+* please, check package.json files
+* main icon from IconTexto (http://icontexto.blogspot.fr/ - CC by-nc-sa)
+* other icons from Gnome Project (http://art.gnome.org/themes/icon - GPL) 
+* alertify.js (http://fabien-d.github.com/alertify.js/ - MIT)
+* List.js (http://listjs.com/ - MIT)

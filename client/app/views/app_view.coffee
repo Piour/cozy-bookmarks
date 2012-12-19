@@ -1,18 +1,18 @@
-View = require '../lib/view'
-AppRouter = require '../routers/app_router'
-BookmarksView = require './bookmarks_view'
-Bookmark = require '../models/bookmark'
+View          = require "../lib/view"
+AppRouter     = require "../routers/app_router"
+BookmarksView = require "./bookmarks_view"
+Bookmark      = require "../models/bookmark"
 
 module.exports = class AppView extends View
-    el: 'body.application'
+    el: "body.application"
 
     events:
-        'click .icon-create': 'onCreateClicked'
-        'click .icon-more': 'onMoreClicked'
-        'click .icon-less': 'onMoreClicked'
+        "click form .create": "bookmarkLink"
+        "click form .title": "toggleForm"
+        "click form .clean": "cleanForm"
 
     template: ->
-        require './templates/home'
+        require "./templates/home"
 
     initialize: ->
         @router = CozyApp.Routers.AppRouter = new AppRouter()
@@ -31,19 +31,23 @@ module.exports = class AppView extends View
                                               window.sortOptions)
                 alertify.log "bookmarks loaded"
 
-    onMoreClicked: (event) =>
-        $(".description-field").toggle()
-        if $(".icon-more").length > 0
-            $(".icon-more").addClass("icon-less")
-            $(".icon-more").removeClass("icon-more")
-            $(".icon-less").attr("title", "less")
-        else
-            $(".icon-less").addClass("icon-more")
-            $(".icon-less").removeClass("icon-less")
-            $(".icon-more").attr("title", "more")
+    toggleForm: (evt) ->
+        $container = $ "form div"
+        $title     = $ evt.target
+        $container.toggle "slow", () ->
+            if $container.is ":visible"
+                $title.attr "title", "click to hide the form"
+            else
+                $title.attr "title", "click to show the form"
         false
 
-    onCreateClicked: (event) =>
+    cleanForm: (evt) ->
+        $form = $ "form"
+        $inputs = $form.find "input, textarea"
+        $inputs.val ""
+        false
+
+    bookmarkLink: (evt) ->
         url   = $('.url-field').val()
         title = $('.title-field').val()
         tags  = $('.tags-field').val().split(',').map (tag) -> $.trim(tag)
@@ -58,9 +62,11 @@ module.exports = class AppView extends View
             bookmark = new Bookmark bookObj
             @bookmarksView.collection.create bookmark,
                 success: =>
-                    $("#create-bookmark-form").find("input, textarea").val("")
-                    alertify.log "" + @$el.find(".title").html() + " added"
-                error: => alert "Server error occured, bookmark was not saved"
+                    @cleanForm()
+                    alertify.log "" + (title || url) + " added"
+                error: =>
+                    alertify.alert "Server error occured, " +
+                                   "bookmark was not saved"
         else
-            alert 'Url field is required'
+            alertify.alert "Url field is required"
         false

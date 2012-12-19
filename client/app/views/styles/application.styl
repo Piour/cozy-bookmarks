@@ -5,91 +5,102 @@
 @import '_ui'
 
 // Import your styles here
-
 @import '_states'
 @import '_layout'
 @import '_responsive'
-    
+
 body.application, input, textarea
     color: #bbb
     background: none repeat scroll 0 0 rgba(30, 30, 30, 0.8)
 
-a, a:visited
-    color: #27aaf2
-    text-decoration: none
-
 #content
     padding: 2em
 
+a, a:visited
+    color: #27aaf2
+    text-decoration: none
+a:focus
+    outline: none
 
-button, input[type=button]
+button
     background-color: inherit
 
-[class^="icon-"], [class*=" icon-"]
-    background-image: url("../images/glyphicons-halflings.png")
-    background-position: 14px 14px
-    background-repeat: no-repeat
-    display: inline-block
-    height: 14px
-    line-height: 14px
-    width: 14px
-    vertical-align: text-top
-    cursor: pointer
-    border-radius: 10px 10px 10px 10px
-    cursor: pointer
-    padding: 10px 15px
-    border: 2px solid #666
-
-.icon-more
-    background-position: -305px -116px
-
-.icon-less
-    background-position: -280px -117px
-
 #create-bookmark-form
+    margin: 0
     padding: 0 2em
-    input
-        padding: .5em
-        margin: 1em
-        width: 24em
-        display: block
-    input[type=button]
-        width: 14px
-        height: 14px
-        padding: 10px 15px
+    background: #222
+    border: 1px solid #262626
+
+    h1
+        cursor: pointer
+        background: #1c1c1c
+        border-top: 1px solid #262626
+        border-bottom:1px solid #161712
+        padding: .3em
+
+    p.last
         display: inline-block
+
+    input
+        display: block
+        margin: 1em
+        padding: .5em
+        width: 24em
+        background: #262626
+        border: 1px double #171717
+
     textarea
         display: block
-        display: none
-        padding: .5em
         margin: 1em
+        padding: .5em
         width: 50em
+        background: #262626
+        border: 1px double #171717
+
     .url-field
         width: 50em
     .tags-field, .title-field
         display: inline-block
-    .icon-create
-        background-position: -280px 3px
-        display: block
-        margin: 1em
 
-.search
-    padding: .5em
-    margin: 1em
-    width: 24em
+    .buttons
+        display: inline-block
+        vertical-align: bottom
+        margin-bottom: 1em
+        padding-bottom: 1em
 
-.icon-sort
-    margin-right: 5px
-    background-position: -209px -116px
-.icon-sort:before
-    content ""
-.icon-delete
-    background-position: -304px 3px
-    &:hover
-        border-color: #700
+        button
+           border: none
+           &.clean
+               img
+                   width: 32px
+                   height: 32px
 
 #bookmark-list
-    padding: 2em
+    margin: 2em 0
+    padding: 0 2em
+    background: #222
+    border: 1px solid #262626
+
+    h1
+        background: #1c1c1c
+        border-top: 1px solid #262626
+        border-bottom:1px solid #161712
+        padding: .3em
+
+    .tools
+        .search
+            display: inline-block
+            margin: 1em
+            padding: .5em
+            width: 24em
+            background: #262626
+            border: 1px double #171717
+       .sort
+           vertical-align: middle
+           border: none
+           img
+               height: 32px
+               width: 32px
 
     ul
         list-style: none
@@ -99,13 +110,17 @@ button, input[type=button]
 
     .bookmark
         margin: .5em 0
-        table-row
         div, a
             padding: .5em
             margin: .5em
             display: table-cell
         .buttons
-            width: 20px
+            button
+                vertical-align: top
+                border: none
+                img
+                    height: 32px
+                    width: 32px
         .title
             font-weight: bold
         .url
@@ -113,10 +128,10 @@ button, input[type=button]
             overflow: hidden
             text-overflow: ellipsis
             white-space: nowrap
-        .url:hover
-            max-width: none
-            overflow: normal
-            text-overflow: inherit
+            &:hover
+                max-width: none
+                overflow: normal
+                text-overflow: inherit
         .tags
             max-width: 20%
         .description

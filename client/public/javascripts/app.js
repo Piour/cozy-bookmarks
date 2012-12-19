@@ -403,39 +403,35 @@ window.require.define({"routers/app_router": function(exports, require, module) 
 
 window.require.define({"views/app_view": function(exports, require, module) {
   var AppRouter, AppView, Bookmark, BookmarksView, View,
-    __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
     __hasProp = {}.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
-  View = require('../lib/view');
+  View = require("../lib/view");
 
-  AppRouter = require('../routers/app_router');
+  AppRouter = require("../routers/app_router");
 
-  BookmarksView = require('./bookmarks_view');
+  BookmarksView = require("./bookmarks_view");
 
-  Bookmark = require('../models/bookmark');
+  Bookmark = require("../models/bookmark");
 
   module.exports = AppView = (function(_super) {
 
     __extends(AppView, _super);
 
     function AppView() {
-      this.onCreateClicked = __bind(this.onCreateClicked, this);
-
-      this.onMoreClicked = __bind(this.onMoreClicked, this);
       return AppView.__super__.constructor.apply(this, arguments);
     }
 
-    AppView.prototype.el = 'body.application';
+    AppView.prototype.el = "body.application";
 
     AppView.prototype.events = {
-      'click .icon-create': 'onCreateClicked',
-      'click .icon-more': 'onMoreClicked',
-      'click .icon-less': 'onMoreClicked'
+      "click form .create": "bookmarkLink",
+      "click form .title": "toggleForm",
+      "click form .clean": "cleanForm"
     };
 
     AppView.prototype.template = function() {
-      return require('./templates/home');
+      return require("./templates/home");
     };
 
     AppView.prototype.initialize = function() {
@@ -459,21 +455,29 @@ window.require.define({"views/app_view": function(exports, require, module) {
       });
     };
 
-    AppView.prototype.onMoreClicked = function(event) {
-      $(".description-field").toggle();
-      if ($(".icon-more").length > 0) {
-        $(".icon-more").addClass("icon-less");
-        $(".icon-more").removeClass("icon-more");
-        $(".icon-less").attr("title", "less");
-      } else {
-        $(".icon-less").addClass("icon-more");
-        $(".icon-less").removeClass("icon-less");
-        $(".icon-more").attr("title", "more");
-      }
+    AppView.prototype.toggleForm = function(evt) {
+      var $container, $title;
+      $container = $("form div");
+      $title = $(evt.target);
+      $container.toggle("slow", function() {
+        if ($container.is(":visible")) {
+          return $title.attr("title", "click to hide the form");
+        } else {
+          return $title.attr("title", "click to show the form");
+        }
+      });
       return false;
     };
 
-    AppView.prototype.onCreateClicked = function(event) {
+    AppView.prototype.cleanForm = function(evt) {
+      var $form, $inputs;
+      $form = $("form");
+      $inputs = $form.find("input, textarea");
+      $inputs.val("");
+      return false;
+    };
+
+    AppView.prototype.bookmarkLink = function(evt) {
       var bookObj, bookmark, description, tags, title, url,
         _this = this;
       url = $('.url-field').val();
@@ -492,15 +496,15 @@ window.require.define({"views/app_view": function(exports, require, module) {
         bookmark = new Bookmark(bookObj);
         this.bookmarksView.collection.create(bookmark, {
           success: function() {
-            $("#create-bookmark-form").find("input, textarea").val("");
-            return alertify.log("" + _this.$el.find(".title").html() + " added");
+            _this.cleanForm();
+            return alertify.log("" + (title || url) + " added");
           },
           error: function() {
-            return alert("Server error occured, bookmark was not saved");
+            return alertify.alert("Server error occured, " + "bookmark was not saved");
           }
         });
       } else {
-        alert('Url field is required');
+        alertify.alert("Url field is required");
       }
       return false;
     };
@@ -516,18 +520,18 @@ window.require.define({"views/bookmark_view": function(exports, require, module)
     __hasProp = {}.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
-  View = require('../lib/view');
+  View = require("../lib/view");
 
   module.exports = BookmarkView = (function(_super) {
 
     __extends(BookmarkView, _super);
 
-    BookmarkView.prototype.className = 'bookmark';
+    BookmarkView.prototype.className = "bookmark";
 
-    BookmarkView.prototype.tagName = 'li';
+    BookmarkView.prototype.tagName = "li";
 
     BookmarkView.prototype.events = {
-      'click .icon-delete': 'onDeleteClicked'
+      "click .delete": "deleteBookmark"
     };
 
     function BookmarkView(model) {
@@ -537,11 +541,11 @@ window.require.define({"views/bookmark_view": function(exports, require, module)
 
     BookmarkView.prototype.template = function() {
       var template;
-      template = require('./templates/bookmark');
+      template = require("./templates/bookmark");
       return template(this.getRenderData());
     };
 
-    BookmarkView.prototype.onDeleteClicked = function() {
+    BookmarkView.prototype.deleteBookmark = function() {
       var title,
         _this = this;
       title = this.$el.find(".title").html();
@@ -556,7 +560,7 @@ window.require.define({"views/bookmark_view": function(exports, require, module)
           return alertify.log("" + title + " removed and placed in form");
         },
         error: function() {
-          alert("Server error occured, bookmark was not deleted.");
+          alertify.alert("Server error occured, bookmark was not deleted.");
           return _this.$('.delete-button').html("delete");
         }
       });
@@ -624,7 +628,7 @@ window.require.define({"views/templates/bookmark": function(exports, require, mo
   var buf = [];
   with (locals || {}) {
   var interp;
-  buf.push('<div class="buttons"><button class="icon-delete"></button></div>');
+  buf.push('<div class="buttons"><button title="click to remove this link from saved bookmarks and place its details into the form" class="delete"><img src="/icons/delete.png" alt="delete"/></button></div>');
   if ( model.title)
   {
   buf.push('<div class="title"><a');
@@ -659,7 +663,7 @@ window.require.define({"views/templates/home": function(exports, require, module
   var buf = [];
   with (locals || {}) {
   var interp;
-  buf.push('<div id="content"><h1>mY BOOkmarks</h1><form id="create-bookmark-form"><p><input placeholder="url" class="url-field"/><input placeholder="title" class="title-field"/><input placeholder="tags, separated by \',\'" class="tags-field"/><input type="button" title="more" class="icon-more"/></p><p><textarea placeholder="description" class="description-field"></textarea></p><button title="create" class="icon-create"></button></form><div id="bookmark-list"><input placeholder="search" class="search"/><button data-sort="title" title="sort by title" class="sort icon-sort"></button><ul class="list"></ul></div></div>');
+  buf.push('<div id="content"><form id="create-bookmark-form"><h1 title="click to hide the form" class="title">Bookmark a link</h1><div><p><input placeholder="url" class="url-field"/><input placeholder="title" class="title-field"/><input placeholder="tags, separated by \',\'" class="tags-field"/></p><p class="last"><textarea placeholder="description" class="description-field"></textarea></p><div class="buttons"><button title="click here to store the bookmark" class="create"><img src="/icons/add.png" alt="add"/></button><button title="click to clean the form" class="clean"><img src="/icons/clean.png" alt="clean"/></button></div></div></form><div id="bookmark-list"><h1 class="title">mY BOOkmarks</h1><div class="tools"><input placeholder="search" class="search"/><button title="click to sort links" data-sort="title" class="sort descending"><img src="/icons/sort-descending.png" alt="sort"/></button></div><ul class="list"></ul></div></div>');
   }
   return buf.join("");
   };

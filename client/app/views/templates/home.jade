@@ -1,16 +1,25 @@
 #content
-    h1 mY BOOkmarks
     form#create-bookmark-form
-        p
-            input.url-field(placeholder="url")
-            input.title-field(placeholder="title")
-            input.tags-field(placeholder="tags, separated by ','")
-            input.icon-more(type="button", title="more")
-        p
-            textarea.description-field(placeholder="description")
-        button.icon-create(title="create")
+        h1.title(title="click to hide the form") Bookmark a link
+        div
+            p
+                input.url-field(placeholder="url")
+                input.title-field(placeholder="title")
+                input.tags-field(placeholder="tags, separated by ','")
+            p.last
+                textarea.description-field(placeholder="description")
+            .buttons
+                button.create(title="click here to store the bookmark")
+                    img(src="/icons/add.png", alt="add")
+                button.clean(title="click to clean the form")
+                    img(src="/icons/clean.png", alt="clean")
+
     div#bookmark-list
-        input.search(placeholder="search")
-        button.sort.icon-sort(data-sort="title", title="sort by title")
+        h1.title mY BOOkmarks
+        .tools
+            input.search(placeholder="search")
+            button.sort.descending(title="click to sort links",
+                                   data-sort="title")
+                    img(src="/icons/sort-descending.png", alt="sort")
         ul.list
 
