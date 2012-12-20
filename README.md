@@ -10,19 +10,13 @@ Store all your bookmarks here !
 
 # Changelog
 
-* v0.6.6
+* v0.7
+  * quickfix to adapt list.js to application needs (testing before rewriting)
   * new styles
-* v0.6.5
-  * new main icon
-* v0.6.4
   * use of alertify.js
-* v0.6.3
   * clean form after adding a bookmark
-  * minor style changes
-* v0.6.2
   * use of ellipsis for too longs urls and minor display changes
-* v0.6.1
-  * solved bug on sorting after adding/deleting bookmark : need more work
+  * solved bug : sorting after adding/deleting bookmark : need more work
 * v0.6
   * put last deleted link into adding link form
   * show url only once if there is no title

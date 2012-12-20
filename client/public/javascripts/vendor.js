@@ -15602,28 +15602,29 @@ var document = window.document,
 
 var List = function(id, options, values) {
     var self = this,
-		templater,
+		//templater,
 		init,
 		initialItems,
 		Item,
-		Templater,
+		//Templater,
 		sortButtons,
 		events = {
 		    'updated': []
 		};
-    this.listContainer = (typeof(id) == 'string') ? document.getElementById(id) : id;
-    // Check if the container exists. If not return instead of breaking the javascript
+    this.listContainer = (typeof(id) == 'string') ? 
+        document.getElementById(id) : 
+        id;
     if (!this.listContainer)
         return;
 
     this.items = [];
-    this.visibleItems = []; // These are the items currently visible
-    this.matchingItems = []; // These are the items currently matching filters and search, regadlessof visible count
+    this.visibleItems = [];
+    this.matchingItems = [];
     this.searched = false;
     this.filtered = false;
 
     this.list = null;
-    this.templateEngines = {};
+    //this.templateEngines = {};
 
     this.page = options.page || 200;
     this.i = options.i || 1;
@@ -15632,7 +15633,7 @@ var List = function(id, options, values) {
         start: function(values, options) {
             options.plugins = options.plugins || {};
             this.classes(options);
-            templater = new Templater(self, options);
+            //templater = new Templater(self, options);
             this.callbacks(options);
             this.items.start(values, options);
             self.update();
@@ -15644,8 +15645,12 @@ var List = function(id, options, values) {
             options.sortClass = options.sortClass || 'sort';
         },
         callbacks: function(options) {
-            self.list = h.getByClass(options.listClass, self.listContainer, true);
-            h.addEvent(h.getByClass(options.searchClass, self.listContainer), 'keyup', self.search);
+            self.list = h.getByClass(options.listClass, 
+                                     self.listContainer, 
+                                     true);
+            h.addEvent(h.getByClass(options.searchClass, self.listContainer), 
+                       'keyup', 
+                       self.search);
             sortButtons = h.getByClass(options.sortClass, self.listContainer);
             h.addEvent(sortButtons, 'click', self.sort);
         },
@@ -15682,12 +15687,12 @@ var List = function(id, options, values) {
                 }
             },
             indexAsync: function(itemElements, valueNames) {
-                var itemsToIndex = itemElements.splice(0, 100); // TODO: If < 100 items, what happens in IE etc?
+                var itemsToIndex = itemElements.splice(0, 100);
                 this.index(itemsToIndex, valueNames);
                 if (itemElements.length > 0) {
                     setTimeout(function() {
                         init.items.indexAsync(itemElements, valueNames);
-                        },
+                    },
                     10);
                 } else {
                     self.update();
@@ -15697,11 +15702,11 @@ var List = function(id, options, values) {
         },
         plugins: function(plugins) {
             var locals = {
-                templater: templater,
+                //templater: templater,
                 init: init,
                 initialItems: initialItems,
                 Item: Item,
-                Templater: Templater,
+                //Templater: Templater,
                 sortButtons: sortButtons,
                 events: events,
                 reset: reset
@@ -15709,7 +15714,10 @@ var List = function(id, options, values) {
             for (var i = 0; i < plugins.length; i++) {
                 plugins[i][1] = plugins[i][1] || {};
                 var pluginName = plugins[i][1].name || plugins[i][0];
-                self[pluginName] = self.plugins[plugins[i][0]].call(self, locals, plugins[i][1]);
+                self[pluginName] = 
+                    self.plugins[plugins[i][0]].call(self, 
+                                                     locals, 
+                                                     plugins[i][1]);
             }
         }
     };
@@ -15745,7 +15753,7 @@ var List = function(id, options, values) {
             self.items.push(item);
             added.push(item);
         }
-        //self.update();
+        self.update();
         return added;
     };
 
@@ -15781,7 +15789,7 @@ var List = function(id, options, values) {
         var found = 0;
         for (var i = 0, il = self.items.length; i < il; i++) {
             if (self.items[i].values()[valueName] == value) {
-                templater.remove(self.items[i], options);
+                //templater.remove(self.items[i], options);
                 self.items.splice(i,1);
                 il--;
                 found++;
@@ -15856,7 +15864,7 @@ var List = function(id, options, values) {
             };
         }
         self.items.sort(options.sortFunction);
-        self.update();
+        self.update(true);
     };
 
     /*
@@ -15881,7 +15889,7 @@ var List = function(id, options, values) {
         // Escape regular expression characters
         searchString = searchString.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
 
-        templater.clear();
+        //templater.clear();
         if (searchString === "" ) {
             reset.search();
             self.searched = false;
@@ -15950,7 +15958,7 @@ var List = function(id, options, values) {
     * Removes all items from the list
     */
     this.clear = function() {
-        templater.clear();
+        //templater.clear();
         self.items = [];
     };
 
@@ -15983,24 +15991,53 @@ var List = function(id, options, values) {
     };
 
 
-    this.update = function() {
+    this.update = function(reload) {
         var is = self.items,
-			il = is.length;
+			il = is.length,
+            listSource = h.getByClass(options.listClass, 
+                                      this.listContainer, 
+                                      true);
 
         self.visibleItems = [];
         self.matchingItems = [];
-        templater.clear();
-        for (var i = 0; i < il; i++) {
-            if (is[i].matching() && ((self.matchingItems.length+1) >= self.i && self.visibleItems.length < self.page)) {
-                is[i].show();
-                self.visibleItems.push(is[i]);
-                self.matchingItems.push(is[i]);
-			} else if (is[i].matching()) {
-                self.matchingItems.push(is[i]);
-                is[i].hide();
-			} else {
-                is[i].hide();
-			}
+        //templater.clear();
+        if (reload) {
+            if (listSource.hasChildNodes()) {
+                while (listSource.childNodes.length >= 1)
+                {
+                    listSource.removeChild(listSource.firstChild);
+                }
+            }
+            for (var i = 0; i < il; i++) {
+                if (is[i].matching() && 
+                    ((self.matchingItems.length+1) >= self.i && 
+                      self.visibleItems.length < self.page)) {
+                    is[i].show();
+                    self.visibleItems.push(is[i]);
+                    self.matchingItems.push(is[i]);
+                } else if (is[i].matching()) {
+                    self.matchingItems.push(is[i]);
+                    is[i].hide();
+                } else {
+                    is[i].hide();
+                }
+                $(listSource).append($(is[i].elm));
+            }
+        } else {
+            for (var i = 0; i < il; i++) {
+                if (is[i].matching() && 
+                    ((self.matchingItems.length+1) >= self.i && 
+                      self.visibleItems.length < self.page)) {
+                    is[i].show();
+                    self.visibleItems.push(is[i]);
+                    self.matchingItems.push(is[i]);
+                } else if (is[i].matching()) {
+                    self.matchingItems.push(is[i]);
+                    is[i].hide();
+                } else {
+                    is[i].hide();
+                }
+            }
         }
         trigger('updated');
     };
@@ -16021,8 +16058,14 @@ var List = function(id, options, values) {
                 }
             } else {
                 item.elm = element;
-                var values = templater.get(item, initValues);
-                item.values(values);
+                //var values = templater.get(item, initValues);
+                //item.values(values);
+                var _values = {};
+                for(var i = 0, il = initValues.length; i < il; i++) {
+                    var elm = h.getByClass(initValues[i], item.elm, true);
+                    _values[initValues[i]] = elm ? elm.innerHTML : "";
+                }
+                item.values(_values);
             }
         };
         this.values = function(newValues, notCreate) {
@@ -16031,17 +16074,19 @@ var List = function(id, options, values) {
                     values[name] = newValues[name];
                 }
                 if (notCreate !== true) {
-                    templater.set(item, item.values());
+                    //templater.set(item, item.values());
                 }
             } else {
                 return values;
             }
         };
         this.show = function() {
-            templater.show(item);
+            $(item.elm).show();
+            //templater.show(item);
         };
         this.hide = function() {
-            templater.hide(item);
+            $(item.elm).hide();
+            //templater.hide(item);
         };
         this.matching = function() {
             return (
@@ -16062,21 +16107,22 @@ var List = function(id, options, values) {
     * - reload(item)
     * - remove(item)
     */
-    Templater = function(list, settings) {
-        if (settings.engine === undefined) {
-            settings.engine = "standard";
-        } else {
-            settings.engine = settings.engine.toLowerCase();
-        }
-        return new self.constructor.prototype.templateEngines[settings.engine](list, settings);
-    };
+    //Templater = function(list, settings) {
+    //    if (settings.engine === undefined) {
+    //        settings.engine = "standard";
+    //    } else {
+    //        settings.engine = settings.engine.toLowerCase();
+    //    }
+    //    return new self.constructor.prototype.templateEngines[settings.engine](list, settings);
+    //};
 
     init.start(values, options);
 };
 
-List.prototype.templateEngines = {};
+//List.prototype.templateEngines = {};
 List.prototype.plugins = {};
 
+/*
 List.prototype.templateEngines.standard = function(list, settings) {
     var listSource = h.getByClass(settings.listClass, list.listContainer, true),
         itemSource = getItemSource(settings.item),
@@ -16111,7 +16157,7 @@ List.prototype.templateEngines.standard = function(list, settings) {
         }
     };
 
-    /* Get values from element */
+    // Get values from element
     this.get = function(item, valueNames) {
         ensure.created(item);
         var values = {};
@@ -16122,7 +16168,7 @@ List.prototype.templateEngines.standard = function(list, settings) {
         return values;
     };
 
-    /* Sets values at element */
+    // Sets values at element
     this.set = function(item, values) {
         ensure.created(item);
         for(var v in values) {
@@ -16140,8 +16186,8 @@ List.prototype.templateEngines.standard = function(list, settings) {
         if (item.elm !== undefined) {
             return;
         }
-        /* If item source does not exists, use the first item in list as
-        source for new items */
+        // If item source does not exists, use the first item in list as
+        // source for new items
         var newItem = itemSource.cloneNode(true);
         newItem.id = "";
         item.elm = newItem;
@@ -16163,7 +16209,7 @@ List.prototype.templateEngines.standard = function(list, settings) {
         }
     };
     this.clear = function() {
-        /* .innerHTML = ''; fucks up IE */
+        // .innerHTML = ''; fucks up IE
         if (listSource.hasChildNodes()) {
             while (listSource.childNodes.length >= 1)
             {
@@ -16172,7 +16218,7 @@ List.prototype.templateEngines.standard = function(list, settings) {
         }
     };
 };
-
+*/
 
 /*
 * These helper functions are not written by List.js author Jonny (they may have been

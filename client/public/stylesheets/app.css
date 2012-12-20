@@ -1054,6 +1054,10 @@ button {
   border-bottom: 1px solid #161712;
   padding: 0.3em;
 }
+#create-bookmark-form p {
+  margin: 0;
+  padding: 0;
+}
 #create-bookmark-form p.last {
   display: inline-block;
 }
@@ -1070,6 +1074,7 @@ button {
   margin: 1em;
   padding: 0.5em;
   width: 50em;
+  height: 5em;
   background: #262626;
   border: 1px double #171717;
 }
@@ -1083,10 +1088,10 @@ button {
 #create-bookmark-form .buttons {
   display: inline-block;
   vertical-align: bottom;
-  margin-bottom: 1em;
-  padding-bottom: 1em;
 }
 #create-bookmark-form .buttons button {
+  margin: 1em 0;
+  padding: 0.5em 0;
   border: none;
 }
 #create-bookmark-form .buttons button.clean img {
@@ -1136,6 +1141,10 @@ button {
   padding: 0.5em;
   margin: 0.5em;
   display: table-cell;
+}
+#bookmark-list .bookmark .buttons {
+  padding: 0;
+  margin: 0;
 }
 #bookmark-list .bookmark .buttons button {
   vertical-align: top;
