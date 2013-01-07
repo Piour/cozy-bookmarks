@@ -10,6 +10,9 @@ Store all your bookmarks here !
 
 # Changelog
 
+* v0.7.1
+  * display full form only after a click on the url field
+  * fixed bug : wrong initial sorting on creation dates
 * v0.7
   * quickfix to adapt list.js to application needs (testing before rewriting)
   * new styles
