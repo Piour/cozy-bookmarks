@@ -32,13 +32,13 @@ module.exports = class AppView extends View
                 alertify.log "bookmarks loaded"
 
     toggleForm: (evt) ->
-        $container = $ "form div"
+        $container = $ "form div.full-form"
         $title     = $ evt.target
         $container.toggle "slow", () ->
             if $container.is ":visible"
                 $title.attr "title", "click to hide the form"
             else
-                $title.attr "title", "click to show the form"
+                $title.attr "title", "click to show the full form"
         false
 
     cleanForm: (evt) ->

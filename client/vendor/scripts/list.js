@@ -271,6 +271,9 @@ var List = function(id, options, values) {
             isAsc = options.asc || false;
         } else {
             value = h.getAttribute(target, 'data-sort');
+            if (!value) {
+                 value = h.getAttribute(target.parentNode, 'data-sort');
+            }
             isAsc = h.hasClass(target, asc) ? false : true;
         }
         for (var i = 0, il = sortButtons.length; i < il; i++) {

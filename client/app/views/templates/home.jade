@@ -1,9 +1,10 @@
 #content
     form#create-bookmark-form
-        h1.title(title="click to hide the form") Bookmark a link
-        div
+        h1.title(title="click to show the full form") 
+            span Bookmark a link
+            input.url-field(placeholder="url")
+        div.full-form
             p
-                input.url-field(placeholder="url")
                 input.title-field(placeholder="title")
                 input.tags-field(placeholder="tags, separated by ','")
             p.last

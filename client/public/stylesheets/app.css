@@ -1054,6 +1054,16 @@ button {
   border-bottom: 1px solid #161712;
   padding: 0.3em;
 }
+#create-bookmark-form h1 span {
+  vertical-align: middle;
+}
+#create-bookmark-form h1 input {
+  vertical-align: middle;
+  display: inline-block;
+}
+#create-bookmark-form div.full-form {
+  display: none;
+}
 #create-bookmark-form p {
   margin: 0;
   padding: 0;
