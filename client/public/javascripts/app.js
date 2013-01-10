@@ -426,6 +426,7 @@ window.require.define({"views/app_view": function(exports, require, module) {
 
     AppView.prototype.events = {
       "click form .create": "bookmarkLink",
+      "click form .title input": "showForm",
       "click form .title": "toggleForm",
       "click form .clean": "cleanForm"
     };
@@ -455,10 +456,23 @@ window.require.define({"views/app_view": function(exports, require, module) {
       });
     };
 
+    AppView.prototype.showForm = function(evt) {
+      var $container, title;
+      $container = $("form div.full-form");
+      title = evt.target.parentNode;
+      console.log("ok?");
+      if (!$container.is(":visible")) {
+        console.log("ok");
+        console.log(title);
+        title.click();
+      }
+      return false;
+    };
+
     AppView.prototype.toggleForm = function(evt) {
       var $container, $title;
       $container = $("form div.full-form");
-      $title = $(evt.target);
+      $title = $(evt.currentTarget);
       $container.toggle("slow", function() {
         if ($container.is(":visible")) {
           return $title.attr("title", "click to hide the form");
@@ -663,7 +677,7 @@ window.require.define({"views/templates/home": function(exports, require, module
   var buf = [];
   with (locals || {}) {
   var interp;
-  buf.push('<div id="content"><form id="create-bookmark-form"><h1 title="click to show the full form" class="title"> <span>Bookmark a link</span><input placeholder="url" class="url-field"/></h1><div class="full-form"><p><input placeholder="title" class="title-field"/><input placeholder="tags, separated by \',\'" class="tags-field"/></p><p class="last"><textarea placeholder="description" class="description-field"></textarea></p><div class="buttons"><button title="click here to store the bookmark" class="create"><img src="icons/add.png" alt="add"/></button><button title="click to clean the form" class="clean"><img src="icons/clean.png" alt="clean"/></button></div></div></form><div id="bookmark-list"><h1 class="title">mY BOOkmarks</h1><div class="tools"><input placeholder="search" class="search"/><button title="click to sort links" data-sort="title" class="sort descending"><img src="icons/sort-descending.png" alt="sort"/></button></div><ul class="list"></ul></div></div>');
+  buf.push('<div id="content"><form id="create-bookmark-form"><h1 title="click to show the full form" class="title"> <span>Bookmark a link</span><input title="click to show the full form" placeholder="url" class="url-field"/></h1><div class="full-form"><p><input placeholder="title" class="title-field"/><input placeholder="tags, separated by \',\'" class="tags-field"/></p><p class="last"><textarea placeholder="description" class="description-field"></textarea></p><div class="buttons"><button title="click here to store the bookmark" class="create"><img src="icons/add.png" alt="add"/></button><button title="click to clean the form" class="clean"><img src="icons/clean.png" alt="clean"/></button></div></div></form><div id="bookmark-list"><h1 class="title">mY BOOkmarks</h1><div class="tools"><input placeholder="search" class="search"/><button title="click to sort links" data-sort="title" class="sort descending"><img src="icons/sort-descending.png" alt="sort"/></button></div><ul class="list"></ul></div></div>');
   }
   return buf.join("");
   };

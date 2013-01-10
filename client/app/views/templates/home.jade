@@ -2,7 +2,8 @@
     form#create-bookmark-form
         h1.title(title="click to show the full form") 
             span Bookmark a link
-            input.url-field(placeholder="url")
+            input.url-field(title="click to show the full form",
+                            placeholder="url")
         div.full-form
             p
                 input.title-field(placeholder="title")
@@ -21,6 +22,6 @@
             input.search(placeholder="search")
             button.sort.descending(title="click to sort links",
                                    data-sort="title")
-                    img(src="icons/sort-descending.png", alt="sort")
+                img(src="icons/sort-descending.png", alt="sort")
         ul.list
 

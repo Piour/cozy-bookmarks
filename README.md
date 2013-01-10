@@ -4,15 +4,20 @@ Store all your bookmarks here !
 
 # To do ...
 
-* review listjs use
+* continue to review listjs use
 * choose the sorting fields
 * tag helper
+* go back to the initial sorting (added time)
+* removing tutorial non used stuff
 
 # Changelog
 
-* v0.7.1
+* v0.8
+  * reducing list.js
   * display full form only after a click on the url field
+  * a bit less dark
   * fixed bug : wrong initial sorting on creation dates
+  * fixed bug : sort button was not working using chrome
 * v0.7
   * quickfix to adapt list.js to application needs (testing before rewriting)
   * new styles

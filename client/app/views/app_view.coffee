@@ -8,6 +8,7 @@ module.exports = class AppView extends View
 
     events:
         "click form .create": "bookmarkLink"
+        "click form .title input": "showForm"
         "click form .title": "toggleForm"
         "click form .clean": "cleanForm"
 
@@ -31,9 +32,19 @@ module.exports = class AppView extends View
                                               window.sortOptions)
                 alertify.log "bookmarks loaded"
 
+    showForm: (evt) ->
+        $container = $ "form div.full-form"
+        title     = evt.target.parentNode
+        console.log "ok?"
+        if !$container.is ":visible"
+            console.log "ok"
+            console.log title
+            title.click()
+        false
+
     toggleForm: (evt) ->
         $container = $ "form div.full-form"
-        $title     = $ evt.target
+        $title     = $ evt.currentTarget
         $container.toggle "slow", () ->
             if $container.is ":visible"
                 $title.attr "title", "click to hide the form"

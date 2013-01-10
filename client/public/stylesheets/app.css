@@ -1025,7 +1025,7 @@ body.application,
 input,
 textarea {
   color: #bbb;
-  background: none repeat scroll 0 0 rgba(30,30,30,0.8);
+  background: none repeat scroll 0 0 rgba(40,40,40,0.8);
 }
 #content {
   padding: 2em;
@@ -1044,12 +1044,12 @@ button {
 #create-bookmark-form {
   margin: 0;
   padding: 0 2em;
-  background: #222;
+  background: #232323;
   border: 1px solid #262626;
 }
 #create-bookmark-form h1 {
   cursor: pointer;
-  background: #1c1c1c;
+  background: #1f1f1f;
   border-top: 1px solid #262626;
   border-bottom: 1px solid #161712;
   padding: 0.3em;
@@ -1111,11 +1111,11 @@ button {
 #bookmark-list {
   margin: 2em 0;
   padding: 0 2em;
-  background: #222;
+  background: #232323;
   border: 1px solid #262626;
 }
 #bookmark-list h1 {
-  background: #1c1c1c;
+  background: #1f1f1f;
   border-top: 1px solid #262626;
   border-bottom: 1px solid #161712;
   padding: 0.3em;
@@ -1170,12 +1170,14 @@ button {
 #bookmark-list .bookmark .url {
   max-width: 20em;
   overflow: hidden;
+  -o-text-overflow: ellipsis;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 #bookmark-list .bookmark .url:hover {
   max-width: none;
   overflow: normal;
+  -o-text-overflow: inherit;
   text-overflow: inherit;
 }
 #bookmark-list .bookmark .tags {
