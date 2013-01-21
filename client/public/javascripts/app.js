@@ -426,6 +426,7 @@ window.require.define({"views/app_view": function(exports, require, module) {
 
     AppView.prototype.events = {
       "click form .create": "bookmarkLink",
+      "keyup form .title input": "showForm",
       "click form .title input": "showForm",
       "click form .title": "toggleForm",
       "click form .clean": "cleanForm"
@@ -460,10 +461,7 @@ window.require.define({"views/app_view": function(exports, require, module) {
       var $container, title;
       $container = $("form div.full-form");
       title = evt.target.parentNode;
-      console.log("ok?");
       if (!$container.is(":visible")) {
-        console.log("ok");
-        console.log(title);
         title.click();
       }
       return false;

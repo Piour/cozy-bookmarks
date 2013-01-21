@@ -8,6 +8,7 @@ module.exports = class AppView extends View
 
     events:
         "click form .create": "bookmarkLink"
+        "keyup form .title input": "showForm"
         "click form .title input": "showForm"
         "click form .title": "toggleForm"
         "click form .clean": "cleanForm"
@@ -35,10 +36,7 @@ module.exports = class AppView extends View
     showForm: (evt) ->
         $container = $ "form div.full-form"
         title     = evt.target.parentNode
-        console.log "ok?"
         if !$container.is ":visible"
-            console.log "ok"
-            console.log title
             title.click()
         false
 

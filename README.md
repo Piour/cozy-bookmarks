@@ -12,6 +12,8 @@ Store all your bookmarks here !
 
 # Changelog
 
+* v0.8.1
+  * fixed bug (issue #2) : no display of the form when writting in url input
 * v0.8
   * reducing list.js
   * display full form only after a click on the url field
