@@ -7,7 +7,6 @@ before ->
             next()
 , only: ['destroy']
 
-
 action 'all', ->
     Bookmark.all (err, bookmarks) ->
         if err

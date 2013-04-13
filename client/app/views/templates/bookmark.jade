@@ -7,7 +7,7 @@ if model.title
 else
     .title
         a(href="#{model.url}") #{model.url}
-div.tags #{model.tags}
+div.tags #{model.readableTags}
 if model.title
     a.url(href="#{model.url}") #{model.url}
 if model.description

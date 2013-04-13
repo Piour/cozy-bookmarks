@@ -1091,7 +1091,8 @@ button {
   border: 1px double #171717;
 }
 #create-bookmark-form .url-field {
-  width: 50em;
+  width: 95%;
+  max-width: 50em;
 }
 #create-bookmark-form .tags-field,
 #create-bookmark-form .title-field {
