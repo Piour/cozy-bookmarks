@@ -1182,14 +1182,12 @@ button {
   margin: 0.5em;
 }
 #bookmark-list .bookmark .info div {
+  max-width: 65%;
   padding: 0.2em;
   margin: 0.2em;
   white-space: normal;
   vertical-align: top;
   display: inline-block;
-}
-#bookmark-list .bookmark .info .tags {
-  max-width: 30%;
 }
 #bookmark-list .bookmark .info .url {
   max-width: 30%;
