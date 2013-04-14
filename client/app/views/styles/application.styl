@@ -53,21 +53,25 @@ button
 
     p.last
         display: inline-block
+        width: 50em
+        max-width: 90%
+        margin: 1em
 
     input
         display: block
         margin: 1em
         padding: .5em
         width: 24em
+        max-width: 90%
         background: #262626
         border: 1px double #171717
 
     textarea
         display: block
-        margin: 1em
-        padding: .5em
-        width: 50em
         height: 5em
+        padding: .5em
+        margin: 0
+        width: 100%
         background: #262626
         border: 1px double #171717
 
@@ -107,7 +111,8 @@ button
             display: inline-block
             margin: 1em
             padding: .5em
-            width: 24em
+            width: 90%
+            max-width: 24em
             background: #262626
             border: 1px double #171717
        .sort
@@ -124,33 +129,46 @@ button
             padding: .5em 0;
 
     .bookmark
+        vertical-align: top
         margin: .5em 0
-        div, a
-            padding: .5em
-            margin: .5em
-            display: table-cell
         .buttons
             padding: 0
             margin: 0
-
+            display: inline-block
             button
                 vertical-align: top
                 border: none
                 img
                     height: 32px
                     width: 32px
+
         .title
             font-weight: bold
-        .url
-            max-width: 20em
-            overflow: hidden
-            text-overflow: ellipsis
+            display: inline-block
+            padding: .2em
+            margin: .2em .2em .2em .5em
+        .info
             white-space: nowrap
-            &:hover
-                max-width: none
-                overflow: normal
-                text-overflow: inherit
-        .tags
-            max-width: 20%
+            display: inline-block
+            width: 70%
+            padding: .5em
+            margin: .5em
+            div
+                padding: .2em
+                margin: .2em
+                white-space: normal
+                vertical-align: top
+                display: inline-block
+            .tags
+                max-width: 30%
+            .url
+                max-width: 30%
+                overflow: hidden
+                white-space: nowrap
+                text-overflow: ellipsis
+                &:hover
+                    white-space: normal
+                    max-width: none
+                    text-overflow: inherit
         .description
             margin: 20px

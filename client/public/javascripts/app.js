@@ -670,13 +670,14 @@ window.require.define({"views/templates/bookmark": function(exports, require, mo
   buf.push(attrs({ 'href':("" + (model.url) + "") }, {"href":true}));
   buf.push('>' + escape((interp = model.url) == null ? '' : interp) + '</a></div>');
   }
-  buf.push('<div class="tags">' + escape((interp = model.readableTags) == null ? '' : interp) + '</div>');
+  buf.push('<div class="info"><div class="tags">' + escape((interp = model.readableTags) == null ? '' : interp) + '</div>');
   if ( model.title)
   {
-  buf.push('<a');
-  buf.push(attrs({ 'href':("" + (model.url) + ""), "class": ('url') }, {"href":true}));
-  buf.push('>' + escape((interp = model.url) == null ? '' : interp) + '</a>');
+  buf.push('<div class="url"><a');
+  buf.push(attrs({ 'href':("" + (model.url) + "") }, {"href":true}));
+  buf.push('>' + escape((interp = model.url) == null ? '' : interp) + '</a></div>');
   }
+  buf.push('</div>');
   if ( model.description)
   {
   buf.push('<p class="description">' + escape((interp = model.description) == null ? '' : interp) + '</p>');

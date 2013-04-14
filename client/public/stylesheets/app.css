@@ -1072,21 +1072,25 @@ button {
 }
 #create-bookmark-form p.last {
   display: inline-block;
+  width: 50em;
+  max-width: 90%;
+  margin: 1em;
 }
 #create-bookmark-form input {
   display: block;
   margin: 1em;
   padding: 0.5em;
   width: 24em;
+  max-width: 90%;
   background: #262626;
   border: 1px double #171717;
 }
 #create-bookmark-form textarea {
   display: block;
-  margin: 1em;
-  padding: 0.5em;
-  width: 50em;
   height: 5em;
+  padding: 0.5em;
+  margin: 0;
+  width: 100%;
   background: #262626;
   border: 1px double #171717;
 }
@@ -1127,7 +1131,8 @@ button {
   display: inline-block;
   margin: 1em;
   padding: 0.5em;
-  width: 24em;
+  width: 90%;
+  max-width: 24em;
   background: #262626;
   border: 1px double #171717;
 }
@@ -1147,17 +1152,13 @@ button {
   padding: 0.5em 0;
 }
 #bookmark-list .bookmark {
+  vertical-align: top;
   margin: 0.5em 0;
-}
-#bookmark-list .bookmark div,
-#bookmark-list .bookmark a {
-  padding: 0.5em;
-  margin: 0.5em;
-  display: table-cell;
 }
 #bookmark-list .bookmark .buttons {
   padding: 0;
   margin: 0;
+  display: inline-block;
 }
 #bookmark-list .bookmark .buttons button {
   vertical-align: top;
@@ -1169,22 +1170,39 @@ button {
 }
 #bookmark-list .bookmark .title {
   font-weight: bold;
+  display: inline-block;
+  padding: 0.2em;
+  margin: 0.2em 0.2em 0.2em 0.5em;
 }
-#bookmark-list .bookmark .url {
-  max-width: 20em;
+#bookmark-list .bookmark .info {
+  white-space: nowrap;
+  display: inline-block;
+  width: 70%;
+  padding: 0.5em;
+  margin: 0.5em;
+}
+#bookmark-list .bookmark .info div {
+  padding: 0.2em;
+  margin: 0.2em;
+  white-space: normal;
+  vertical-align: top;
+  display: inline-block;
+}
+#bookmark-list .bookmark .info .tags {
+  max-width: 30%;
+}
+#bookmark-list .bookmark .info .url {
+  max-width: 30%;
   overflow: hidden;
+  white-space: nowrap;
   -o-text-overflow: ellipsis;
   text-overflow: ellipsis;
-  white-space: nowrap;
 }
-#bookmark-list .bookmark .url:hover {
+#bookmark-list .bookmark .info .url:hover {
+  white-space: normal;
   max-width: none;
-  overflow: normal;
   -o-text-overflow: inherit;
   text-overflow: inherit;
-}
-#bookmark-list .bookmark .tags {
-  max-width: 20%;
 }
 #bookmark-list .bookmark .description {
   margin: 20px;
