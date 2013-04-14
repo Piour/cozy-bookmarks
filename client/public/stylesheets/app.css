@@ -1177,7 +1177,7 @@ button {
 #bookmark-list .bookmark .info {
   white-space: nowrap;
   display: inline-block;
-  width: 70%;
+  max-width: 90%;
   padding: 0.5em;
   margin: 0.5em;
 }
