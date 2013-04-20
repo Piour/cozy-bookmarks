@@ -372,6 +372,23 @@ window.require.define({"models/bookmark": function(exports, require, module) {
       return !(this.id != null);
     };
 
+    Bookmark.prototype.cleanValues = function() {
+      var httpUrl, readableTags, tag, _i, _len, _ref;
+      readableTags = "";
+      _ref = this.attributes.tags;
+      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+        tag = _ref[_i];
+        readableTags += tag + ", ";
+      }
+      readableTags = readableTags.slice(0, readableTags.length - 2);
+      this.attributes.readableTags = readableTags;
+      httpUrl = this.attributes.url;
+      if (httpUrl.slice(0, 4) !== "http") {
+        httpUrl = "http://" + httpUrl;
+      }
+      return this.attributes.httpUrl = httpUrl;
+    };
+
     return Bookmark;
 
   })(Backbone.Model);
@@ -557,20 +574,8 @@ window.require.define({"views/bookmark_view": function(exports, require, module)
       return template(this.getRenderData());
     };
 
-    BookmarkView.prototype.cleanTags = function() {
-      var readableTags, tag, _i, _len, _ref;
-      readableTags = "";
-      _ref = this.model.attributes.tags;
-      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-        tag = _ref[_i];
-        readableTags += tag + ", ";
-      }
-      readableTags = readableTags.slice(0, readableTags.length - 2);
-      return this.model.attributes.readableTags = readableTags;
-    };
-
     BookmarkView.prototype.render = function() {
-      this.cleanTags();
+      this.model.cleanValues();
       return BookmarkView.__super__.render.call(this);
     };
 
@@ -661,20 +666,20 @@ window.require.define({"views/templates/bookmark": function(exports, require, mo
   if ( model.title)
   {
   buf.push('<div class="title"><a');
-  buf.push(attrs({ 'href':("" + (model.url) + "") }, {"href":true}));
+  buf.push(attrs({ 'href':("" + (model.httpUrl) + "") }, {"href":true}));
   buf.push('>' + escape((interp = model.title) == null ? '' : interp) + '</a></div>');
   }
   else
   {
   buf.push('<div class="title"><a');
-  buf.push(attrs({ 'href':("" + (model.url) + "") }, {"href":true}));
+  buf.push(attrs({ 'href':("" + (model.httpUrl) + "") }, {"href":true}));
   buf.push('>' + escape((interp = model.url) == null ? '' : interp) + '</a></div>');
   }
   buf.push('<div class="info"><div class="tags">' + escape((interp = model.readableTags) == null ? '' : interp) + '</div>');
   if ( model.title)
   {
   buf.push('<div class="url"><a');
-  buf.push(attrs({ 'href':("" + (model.url) + "") }, {"href":true}));
+  buf.push(attrs({ 'href':("" + (model.httpUrl) + "") }, {"href":true}));
   buf.push('>' + escape((interp = model.url) == null ? '' : interp) + '</a></div>');
   }
   buf.push('</div>');

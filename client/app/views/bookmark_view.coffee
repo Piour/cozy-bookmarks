@@ -14,15 +14,8 @@ module.exports = class BookmarkView extends View
         template = require "./templates/bookmark"
         template @getRenderData()
 
-    cleanTags: () ->
-        readableTags = ""
-        for tag in @model.attributes.tags
-            readableTags += tag + ", "
-        readableTags = readableTags.slice(0, readableTags.length - 2)
-        @model.attributes.readableTags = readableTags
- 
     render: () ->
-        @cleanTags()
+        @model.cleanValues()
         super()
 
     deleteBookmark: ->

@@ -3,14 +3,14 @@
         img(src="icons/delete.png", alt="delete")
 if model.title
     .title
-        a(href="#{model.url}") #{model.title}
+        a(href="#{model.httpUrl}") #{model.title}
 else
     .title
-        a(href="#{model.url}") #{model.url}
+        a(href="#{model.httpUrl}") #{model.url}
 .info
     .tags #{model.readableTags}
     if model.title
         .url
-            a(href="#{model.url}") #{model.url}
+            a(href="#{model.httpUrl}") #{model.url}
 if model.description
     p.description #{model.description}

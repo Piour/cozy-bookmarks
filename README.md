@@ -12,6 +12,8 @@ Store all your bookmarks here !
 
 # Changelog
 
+* v0.8.3
+  * adding http to url that dont start with http
 * v0.8.2
   * css corrections for small screens
 * v0.8.1
