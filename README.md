@@ -12,11 +12,10 @@ Store all your bookmarks here !
 
 # Changelog
 
-* v0.8.3
+* v0.9
+  * import from firefox/chrome html export
   * adding http to url that dont start with http
-* v0.8.2
   * css corrections for small screens
-* v0.8.1
   * fixed bug (issue #2) : no display of the form when writting in url input
 * v0.8
   * reducing list.js

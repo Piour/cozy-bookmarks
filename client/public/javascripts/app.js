@@ -446,7 +446,9 @@ window.require.define({"views/app_view": function(exports, require, module) {
       "keyup form .title input": "showForm",
       "click form .title input": "showForm",
       "click form .title": "toggleForm",
-      "click form .clean": "cleanForm"
+      "click form .clean": "cleanForm",
+      "click .icon-import": "import",
+      "change #bookmarks-file": "uploadFile"
     };
 
     AppView.prototype.template = function() {
@@ -536,6 +538,83 @@ window.require.define({"views/app_view": function(exports, require, module) {
         alertify.alert("Url field is required");
       }
       return false;
+    };
+
+    AppView.prototype.addBookmarkFromFile = function(link) {
+      var $link, bookObj, bookmark, description, next, title, url,
+        _this = this;
+      $link = $(link);
+      if (!!$link.attr("href").indexOf("place") && !$link.attr("feedurl")) {
+        url = $link.attr("href");
+        title = $link.text();
+        description = "";
+        next = $link.parents(":first").next();
+        if (next.is("dd")) {
+          description = next.text();
+        }
+        bookObj = {
+          title: title,
+          url: url,
+          tags: [],
+          description: description
+        };
+        bookmark = new Bookmark(bookObj);
+        return this.bookmarksView.collection.create(bookmark, {
+          success: function() {
+            var imported;
+            imported = $(".imported");
+            if (imported.text()) {
+              return imported.text(parseInt(imported.text()) + 1);
+            } else {
+              return imported.text(1);
+            }
+          },
+          error: function() {
+            var notImported;
+            notImported = $(".import-failed");
+            if (notImported.text()) {
+              return notImported.text(parseInt(notImported.text()) + 1);
+            } else {
+              return notImported.text(1);
+            }
+          }
+        });
+      }
+    };
+
+    AppView.prototype.addBookmarksFromFile = function(file) {
+      var link, links, loaded, _i, _len, _results;
+      loaded = $(file);
+      links = loaded.find("dt a");
+      _results = [];
+      for (_i = 0, _len = links.length; _i < _len; _i++) {
+        link = links[_i];
+        _results.push(this.addBookmarkFromFile(link));
+      }
+      return _results;
+    };
+
+    AppView.prototype.uploadFile = function(evt) {
+      var file, reader,
+        _this = this;
+      file = evt.target.files[0];
+      if (file.type !== "text/html") {
+        alertify.alert("This file cannot be imported");
+        return;
+      }
+      reader = new FileReader();
+      reader.onload = function(evt) {
+        return _this.addBookmarksFromFile(evt.target.result);
+      };
+      return reader.readAsText(file);
+    };
+
+    AppView.prototype["import"] = function(evt) {
+      return alertify.confirm("Import html bookmarks file exported by " + "firefox or chrome", function(ok) {
+        if (ok) {
+          return $("#bookmarks-file").click();
+        }
+      });
     };
 
     return AppView;
@@ -698,7 +777,7 @@ window.require.define({"views/templates/home": function(exports, require, module
   var buf = [];
   with (locals || {}) {
   var interp;
-  buf.push('<div id="content"><form id="create-bookmark-form"><h1 title="click to show the full form" class="title"> <span>Bookmark a link</span><input title="click to show the full form" placeholder="url" class="url-field"/></h1><div class="full-form"><p><input placeholder="title" class="title-field"/><input placeholder="tags, separated by \',\'" class="tags-field"/></p><p class="last"><textarea placeholder="description" class="description-field"></textarea></p><div class="buttons"><button title="click here to store the bookmark" class="create"><img src="icons/add.png" alt="add"/></button><button title="click to clean the form" class="clean"><img src="icons/clean.png" alt="clean"/></button></div></div></form><div id="bookmark-list"><h1 class="title">mY BOOkmarks</h1><div class="tools"><input placeholder="search" class="search"/><button title="click to sort links" data-sort="title" class="sort descending"><img src="icons/sort-descending.png" alt="sort"/></button></div><ul class="list"></ul></div></div>');
+  buf.push('<div id="content"><input type="file" name="bookmarks-file" id="bookmarks-file"/><span class="import"><img src="icons/import.png" alt="import" title="import html bookmarks files exported from your browser" class="icon-import"/><p class="imported"></p><p class="importe-failed"></p></span><form id="create-bookmark-form"><h1 title="click to show the full form" class="title"> <span>Bookmark a link</span><input title="click to show the full form" placeholder="url" class="url-field"/></h1><div class="full-form"><p><input placeholder="title" class="title-field"/><input placeholder="tags, separated by \',\'" class="tags-field"/></p><p class="last"><textarea placeholder="description" class="description-field"></textarea></p><div class="buttons"><button title="click here to store the bookmark" class="create"><img src="icons/add.png" alt="add"/></button><button title="click to clean the form" class="clean"><img src="icons/clean.png" alt="clean"/></button></div></div></form><div id="bookmark-list"><h1 class="title">mY BOOkmarks</h1><div class="tools"><input placeholder="search" class="search"/><button title="click to sort links" data-sort="title" class="sort descending"><img src="icons/sort-descending.png" alt="sort"/></button></div><ul class="list"></ul></div></div>');
   }
   return buf.join("");
   };

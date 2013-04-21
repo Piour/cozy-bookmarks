@@ -28,16 +28,13 @@
 	outline: none;
 	box-shadow: 0 0 15px #2B72D5;
 }
+.alertify-button-cancel:hover {
+	outline: none;
+	box-shadow: 0 0 15px #FE1A00;
+}
 .alertify-button:active {
 	position: relative;
 	top: 1px;
-}
-.alertify-button-cancel {
-    background-color: #FE1A00;
-    border: 1px solid #D83526;
-}
-.alertify-button-ok {
-    color: #5CB811;
 }
 .alertify-log {
 	background: #1F1F1F;

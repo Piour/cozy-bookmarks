@@ -11,6 +11,7 @@
 
 body.application, input, textarea
     color: #bbb
+    padding: 0
     background: none repeat scroll 0 0 rgba(40, 40, 40, 0.8)
 
 #content
@@ -24,6 +25,23 @@ a:focus
 
 button
     background-color: inherit
+
+#bookmarks-file
+    display: none
+
+.import
+    position: absolute
+    top: 1.5em
+    right: 1.5em
+    .import-failed
+        padding: 0
+        margin: 0
+    .imported
+        padding: 0
+        margin: 0
+.icon-import
+    cursor: pointer
+    width: 16px
 
 #create-bookmark-form
     margin: 0

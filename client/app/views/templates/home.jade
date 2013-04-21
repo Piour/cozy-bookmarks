@@ -1,4 +1,13 @@
 #content
+    input(type="file", name="bookmarks-file", id="bookmarks-file")
+    span.import
+        img(src="icons/import.png", 
+            alt="import", 
+            title="import html bookmarks files exported from your browser"
+            class="icon-import")
+        p.imported
+        p.importe-failed
+
     form#create-bookmark-form
         h1.title(title="click to show the full form") 
             span Bookmark a link
@@ -15,6 +24,7 @@
                     img(src="icons/add.png", alt="add")
                 button.clean(title="click to clean the form")
                     img(src="icons/clean.png", alt="clean")
+    
 
     div#bookmark-list
         h1.title mY BOOkmarks
