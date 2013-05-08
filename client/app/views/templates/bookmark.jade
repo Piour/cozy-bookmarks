@@ -8,9 +8,15 @@ else
     .title
         a(href="#{model.httpUrl}") #{model.url}
 .info
-    .tags #{model.readableTags}
     if model.title
-        .url
-            a(href="#{model.httpUrl}") #{model.url}
+        if model.tags.length
+            .tags #{model.readableTags}
+            .url
+                a(href="#{model.httpUrl}") #{model.url}
+        else
+            .url.full
+                a(href="#{model.httpUrl}") #{model.url}
+    else
+        .tags.full #{model.readableTags}
 if model.description
     p.description #{model.description}

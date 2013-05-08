@@ -754,12 +754,25 @@ window.require.define({"views/templates/bookmark": function(exports, require, mo
   buf.push(attrs({ 'href':("" + (model.httpUrl) + "") }, {"href":true}));
   buf.push('>' + escape((interp = model.url) == null ? '' : interp) + '</a></div>');
   }
-  buf.push('<div class="info"><div class="tags">' + escape((interp = model.readableTags) == null ? '' : interp) + '</div>');
+  buf.push('<div class="info">');
   if ( model.title)
   {
-  buf.push('<div class="url"><a');
+  if ( model.tags.length)
+  {
+  buf.push('<div class="tags">' + escape((interp = model.readableTags) == null ? '' : interp) + '</div><div class="url"><a');
   buf.push(attrs({ 'href':("" + (model.httpUrl) + "") }, {"href":true}));
   buf.push('>' + escape((interp = model.url) == null ? '' : interp) + '</a></div>');
+  }
+  else
+  {
+  buf.push('<div class="url full"><a');
+  buf.push(attrs({ 'href':("" + (model.httpUrl) + "") }, {"href":true}));
+  buf.push('>' + escape((interp = model.url) == null ? '' : interp) + '</a></div>');
+  }
+  }
+  else
+  {
+  buf.push('<div class="tags full">' + escape((interp = model.readableTags) == null ? '' : interp) + '</div>');
   }
   buf.push('</div>');
   if ( model.description)

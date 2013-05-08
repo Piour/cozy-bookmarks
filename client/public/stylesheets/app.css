@@ -1206,6 +1206,9 @@ button {
   vertical-align: top;
   display: inline-block;
 }
+#bookmark-list .bookmark .info div.full {
+  max-width: 80%;
+}
 #bookmark-list .bookmark .info .url {
   max-width: 30%;
   overflow: hidden;
