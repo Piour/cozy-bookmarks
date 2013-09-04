@@ -12,6 +12,8 @@ Store all your bookmarks here !
 
 # Changelog
 
+* v0.9.1
+  * using americano instead of compound
 * v0.9
   * import from firefox/chrome html export
   * adding http to url that dont start with http

@@ -373,11 +373,14 @@ window.require.define({"models/bookmark": function(exports, require, module) {
     };
 
     Bookmark.prototype.cleanValues = function() {
-      var httpUrl, readableTags, tag, _i, _len, _ref;
+      var httpUrl, readableTags, tag, tags, _i, _len;
       readableTags = "";
-      _ref = this.attributes.tags;
-      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-        tag = _ref[_i];
+      tags = this.attributes.tags;
+      if (typeof tags === "string") {
+        tags = tags.split(",");
+      }
+      for (_i = 0, _len = tags.length; _i < _len; _i++) {
+        tag = tags[_i];
         readableTags += tag + ", ";
       }
       readableTags = readableTags.slice(0, readableTags.length - 2);
