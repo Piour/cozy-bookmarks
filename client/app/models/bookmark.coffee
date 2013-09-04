@@ -7,7 +7,10 @@ module.exports = class Bookmark extends Backbone.Model
 
     cleanValues: () ->
         readableTags = ""
-        for tag in @attributes.tags
+        tags = @attributes.tags
+        if typeof tags is "string"
+            tags = tags.split ","
+        for tag in tags
             readableTags += tag + ", "
         readableTags = readableTags.slice(0, readableTags.length - 2)
         @attributes.readableTags = readableTags
