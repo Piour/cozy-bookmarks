@@ -9,6 +9,7 @@ Store all your bookmarks here !
 * tag helper
 * go back to the initial sorting (added time)
 * removing tutorial non used stuff
+* display in the app links to the used ressources
 
 # Changelog
 
