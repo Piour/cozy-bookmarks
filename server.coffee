@@ -1,4 +1,4 @@
 americano = require 'americano'
 
-port = process.env.PORT || 9250
+port = process.env.PORT || 31435
 americano.start name: 'Bookmark', port: port

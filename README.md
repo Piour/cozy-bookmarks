@@ -13,6 +13,8 @@ Store all your bookmarks here !
 
 # Changelog
 
+* v0.9.2
+  * change default port (all apps with same port may disturb cozy)
 * v0.9.1
   * using americano instead of compound
 * v0.9
