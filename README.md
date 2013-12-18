@@ -4,6 +4,7 @@ Store all your bookmarks here !
 
 # To do ...
 
+* change tag model to use [String]
 * continue to review listjs use
 * choose the sorting fields
 * tag helper
@@ -13,6 +14,8 @@ Store all your bookmarks here !
 
 # Changelog
 
+* v0.9.3
+  * config config
 * v0.9.2
   * change default port (all apps with same port may disturb cozy)
 * v0.9.1
