@@ -45,29 +45,24 @@ task 'tests:file', 'run test through mocha for a given file', (options) ->
       console.log "Running mocha caught exception: \n" + err
     console.log stdout
 
-task "xunit", "", ->
-  process.env.TZ = "Europe/Paris"
-  command = "mocha "
-  command += " --require should --compilers coffee:coffee-script -R xunit > xunit.xml"
-  exec command, (err, stdout, stderr) ->
-    console.log stdout
-
-task "xunit:client", "", ->
-  process.env.TZ = "Europe/Paris"
-  command = "mocha client/test/*"
-  command += " --require should --compilers coffee:coffee-script -R xunit > xunitclient.xml"
-  exec command, (err, stdout, stderr) ->
-    console.log stdout
-
-task 'compile', 'run tests through mocha', ->
-    files = walk "server", []
-    console.log "Compilation..."
-    command = "coffee -cb server.coffee #{files.join ' '} "
+task "lint", "Run coffeelint on backend files", ->
+    process.env.TZ = "Europe/Paris"
+    command = "coffeelint -f coffeelint.json -r server.coffee server/"
     exec command, (err, stdout, stderr) ->
+        console.log err
         console.log stdout
-        if err
-          console.log "Running compilation caught exception: \n" + err
-          process.exit 1
-        else
-          console.log "Sucessful compilation!"
-          process.exit 0
+
+task 'convert', 'Compile CoffeeScript into JavaScript (server)', ->
+  files = walk "server", []
+  console.log "Compilation..."
+  command = "coffee -cb server.coffee #{files.join ' '} "
+  exec command, (err, stdout, stderr) ->
+    console.log stdout
+    if err
+      console.log "Running compilation caught exception: \n" + err
+      process.exit 1
+    else
+      console.log "Sucessful compilation!"
+      process.exit 0
+
+
