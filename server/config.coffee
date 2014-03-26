@@ -1,5 +1,4 @@
 americano = require 'americano'
-
 config =
     common: [
         americano.bodyParser()
