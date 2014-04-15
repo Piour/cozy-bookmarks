@@ -13,6 +13,7 @@ module.exports = class AppView extends View
         "click form .title": "toggleForm"
         "click form .clean": "cleanForm"
         "click .icon-import": "import"
+        "click .export": "export"
         "change #bookmarks-file": "uploadFile"
 
     template: ->
@@ -133,3 +134,6 @@ module.exports = class AppView extends View
                          "firefox or chrome",
             (ok) -> if ok
                 $("#bookmarks-file").click()
+
+    export: (evt) ->
+        window.location = 'export'
