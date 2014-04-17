@@ -10,5 +10,8 @@ module.exports = {
   },
   'bookmarks/:id': {
     "delete": bookmarks.destroy
+  },
+  'export': {
+    get: bookmarks["export"]
   }
 };

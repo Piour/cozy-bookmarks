@@ -373,6 +373,7 @@ table {
     border-collapse: collapse;
     border-spacing: 0;
 }
+
 .alertify-show,
 .alertify-log {
 	-webkit-transition: all 500ms cubic-bezier(0.175, 0.885, 0.320, 1); /* older webkit */
@@ -468,6 +469,7 @@ table {
 		margin: 0;
 	}
 }
+
 /**
  * Default Look and Feel
  */
@@ -522,6 +524,7 @@ table {
     background: #5CB811;
     background: rgba(92,184,17,.9);
 }
+
 /*  Font Awesome
     the iconic font designed for use with Twitter Bootstrap
     -------------------------------------------------------
@@ -825,6 +828,7 @@ li[class^="icon-"].icon-large:before, li[class*=" icon-"].icon-large:before {
 .icon-paste:before                { content: "\f0ea"; }
 
 .icon-user-md:before              { content: "\f200"; }
+
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -1042,22 +1046,33 @@ button {
 #bookmarks-file {
   display: none;
 }
-.import {
+.import,
+.export {
   position: absolute;
+}
+.import button,
+.export button {
+  color: #373;
+  border: 0;
+  font-size: 1.5em;
+}
+.import .import-failed,
+.export .import-failed {
+  padding: 0;
+  margin: 0;
+}
+.import .imported,
+.export .imported {
+  padding: 0;
+  margin: 0;
+}
+.import {
   top: 1.5em;
   right: 1.5em;
 }
-.import .import-failed {
-  padding: 0;
-  margin: 0;
-}
-.import .imported {
-  padding: 0;
-  margin: 0;
-}
-.icon-import {
-  cursor: pointer;
-  width: 16px;
+.export {
+  top: 1.5em;
+  right: 3em;
 }
 #create-bookmark-form {
   margin: 0;
@@ -1225,6 +1240,7 @@ button {
 #bookmark-list .bookmark .description {
   margin: 20px;
 }
+
 .chromeframe { margin: 0.2em 0; background: #ccc; color: #000; padding: 0.2em 0; }
 .ir { display: block; border: 0; text-indent: -999em; overflow: hidden; background-color: transparent; background-repeat: no-repeat; text-align: left; direction: ltr; *line-height: 0; }
 .ir br { display: none; }
@@ -1250,3 +1266,6 @@ button {
   p, h2, h3 { orphans: 3; widows: 3; }
   h2, h3 { page-break-after: avoid; }
 }
+
+
+/*# sourceMappingURL=app.css.map*/

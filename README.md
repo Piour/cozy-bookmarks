@@ -14,6 +14,8 @@ Store all your bookmarks here !
 
 # Changelog
 
+* v0.9.4
+  * add an export button
 * v0.9.3
   * config config
 * v0.9.2

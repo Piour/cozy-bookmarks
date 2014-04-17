@@ -1,12 +1,14 @@
 #content
     input(type="file", name="bookmarks-file", id="bookmarks-file")
     span.import
-        img(src="icons/import.png",
-            alt="import",
-            title="import html bookmarks files exported from your browser"
+        button.icon.icon-upload(
+            title="import html bookmarks files exported from your browser",
             class="icon-import")
         p.imported
         p.importe-failed
+    span.export
+        button.icon.icon-download(title="export bookmarks in html",
+                                  class="icon-export")
 
     form#create-bookmark-form
         h1.title(title="click to show the full form")
@@ -33,9 +35,3 @@
                                    data-sort="title")
                 img(src="icons/sort-descending.png", alt="sort")
         ul.list
-
-    div#export
-        h1.title Export your bookmarks
-        p
-            button.export Export
-

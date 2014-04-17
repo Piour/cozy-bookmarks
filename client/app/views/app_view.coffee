@@ -12,7 +12,7 @@ module.exports = class AppView extends View
         "click form .title input": "showForm"
         "click form .title": "toggleForm"
         "click form .clean": "cleanForm"
-        "click .icon-import": "import"
+        "click .import": "import"
         "click .export": "export"
         "change #bookmarks-file": "uploadFile"
 
@@ -136,4 +136,4 @@ module.exports = class AppView extends View
                 $("#bookmarks-file").click()
 
     export: (evt) ->
-        window.location = 'export'
+        window.location = "export"
