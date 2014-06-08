@@ -9,22 +9,49 @@
 @import '_layout'
 @import '_responsive'
 
+main-color = #bbb
+
 body.application, input, textarea
-    color: #bbb
-    padding: 0
-    background: none repeat scroll 0 0 rgba(40, 40, 40, 0.8)
+    color: main-color;
+    padding: 0;
+    background: none repeat scroll 0 0 rgba(40,40,40,0.8);
 
 #content
     padding: 1em
+    input, textarea
+        border: #1f1f1f
+        color: #eee
+    .row
+        margin: 0 .5em
+    .form-control
+        background: #262626
+    .panel
+        border: #1f1f1f
+        background: main-color
+    .panel-heading
+        background: #1f1f1f
+        border: #1f1f1f
+        color: main-color
+        .panel-title
+            font-weight: bold
+            font-size: 2em
+            padding: .5em
+    .panel-body
+        background: #1f1f1f
+        color: main-color
+    .btn
+        margin: 0 .5em
+        padding: 0.1
+        opacity: 0.8
+        vertical-align: middle
 
-a, a:visited
-    color: #27aaf2
-    text-decoration: none
-a:focus
-    outline: none
-
-button
-    background-color: inherit
+#create-bookmark-form
+    textarea
+        height: 5em
+    .create
+        font-size: 2.5em
+    .full-form
+        display: none
 
 #bookmarks-file
     display: none
@@ -32,7 +59,9 @@ button
 .import
 .export
     position: absolute
+    top: 1.5em
     button
+        background: transparent
         color: #373
         border: 0
         font-size: 1.5em
@@ -43,156 +72,55 @@ button
         padding: 0
         margin: 0
 .import
-    top: 1.5em
-    right: 1.5em
+    right: 1em
 .export
-    top: 1.5em
     right: 3em
 
-#create-bookmark-form
-    margin: 0
-    padding: 0 2em
-    background: #232323
-    border: 1px solid #262626
-
-    h1
-        cursor: pointer
-        background: #1f1f1f
-        border-top: 1px solid #262626
-        border-bottom:1px solid #161712
-        padding: .3em .5em
-        span
-            vertical-align: middle
-        input
-            vertical-align: middle
-            display: inline-block
-            margin: .5em 1em
-            padding: .5em
-
-    div.full-form
-        display: none
-    p
-        margin: 0
-        padding: 0
-
-    p.last
-        display: inline-block
-        width: 50em
-        max-width: 90%
-        margin: 1em
-
-    input
-        display: block
-        margin: 1em
-        padding: .5em
-        width: 24em
-        max-width: 90%
-        background: #262626
-        border: 1px double #171717
-
-    textarea
-        display: block
-        height: 5em
-        padding: .5em
-        margin: 0
-        width: 100%
-        background: #262626
-        border: 1px double #171717
-
-    .url-field
-        width: 95%
-        max-width: 50em
-    .tags-field, .title-field
-        display: inline-block
-
-    .buttons
-        display: inline-block
-        vertical-align: bottom
-
-        button
-           margin: 1em 0
-           padding: .5em 0
-           border: none
-           &.clean
-               img
-                   width: 32px
-                   height: 32px
-
-#bookmark-list
-    margin: 2em 0
-    padding: 0 1em
-    background: #232323
-    border: 1px solid #262626
-
-    h1
-        background: #1f1f1f
-        border-top: 1px solid #262626
-        border-bottom:1px solid #161712
-        padding: .3em
-
-    .tools
-        .search
-            display: inline-block
-            margin: 1em
-            padding: .5em
-            width: 90%
-            max-width: 24em
-            background: #262626
-            border: 1px double #171717
-       .sort
-           vertical-align: middle
-           border: none
-           img
-               height: 32px
-               width: 32px
-
+#bookmarks-list
     ul
         list-style: none
-        padding: 0 1em;
-        li
-            border-top: 1px solid #666666;
-            padding: .5em 0;
-
+    li
+        border-top: 1px solid #333
+        padding: .5em 0;
     .bookmark
-        vertical-align: top
-        margin: .5em 0
-        .buttons
-            padding: 0
+        .btn
+            visibility: hidden
             margin: 0
-            display: inline-block
-            button
-                vertical-align: top
-                border: none
-                img
-                    height: 32px
-                    width: 32px
-
-        .title
-            font-weight: bold
-            display: inline-block
-            padding: .2em
-            margin: .2em .2em .2em .5em
-        .info
-            white-space: nowrap
+            padding: 0.1em
+            div
+                vertical-align: initial
+        &:hover
+            .btn
+                visibility: visible
+        div
             display: inline-block
             max-width: 65%
-            margin: .2em .2em .2em .5em
-            div
-                max-width: 65%
-                margin: .0 .5em
-                white-space: normal
-                vertical-align: top
-                display: inline-block
-                &.full
-                    max-width: 80%
-            .url
-                max-width: 30%
-                overflow: hidden
-                white-space: nowrap
-                text-overflow: ellipsis
-                &:hover
-                    white-space: normal
-                    max-width: none
-                    text-overflow: inherit
+            margin: .0 .5em
+            white-space: normal
+            vertical-align: middle
+            &.full
+                max-width: 80%
         .description
-            margin: 20px
+            margin: .5em 4em
+        .info
+            white-space: nowrap
+            max-width: 65%
+        .url
+            max-width: 30%
+            overflow: hidden
+            white-space: nowrap
+            text-overflow: ellipsis
+            &:hover
+                white-space: normal
+                max-width: none
+
+.alertify-dialog, .alertify-buttons, .alertify-log
+    background: #000
+    opacity: 0.8
+    text-align: center
+    color: main-color
+.alertify-button-ok:
+    background: #000
+    box-shadow: none
+.alertify-message
+    font-size: 1.5em

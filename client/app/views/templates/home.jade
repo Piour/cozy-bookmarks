@@ -10,28 +10,50 @@
         button.glyphicon.glyphicon-download(title="export bookmarks in html",
                                             class="icon-export")
 
-    form#create-bookmark-form
-        h1.title(title="click to show the full form")
-            span Bookmark a link
-            input.url-field(title="click to show the full form",
-                            placeholder="url")
-        div.full-form
-            p
-                input.title-field(placeholder="title")
-                input.tags-field(placeholder="tags, separated by ','")
-            p.last
-                textarea.description-field(placeholder="description")
-            .buttons
-                button.create(title="click here to store the bookmark")
-                    img(src="icons/add.png", alt="add")
-                button.clean(title="click to clean the form")
-                    img(src="icons/clean.png", alt="clean")
+    form#create-bookmark-form(role="form")
+        .panel.panel-default
+            .panel-heading(class="title")
+                h3.panel-title(title="click to show the full form") 
+                    | Bookmark a link
+                .row
+                    .form-group.col-xs-8
+                        input.form-control(class="url-field",
+                                           placeholder="url")
+            .panel-body.full-form
+                .row
+                    .form-group.col-xs-5
+                        input.form-control(class="title-field",
+                                           placeholder="title")
+                    .form-group.col-xs-5
+                        input.form-control(class="tags-field",
+                                           placeholder="tags, separated by ','")
+                .row
+                    .form-group.col-xs-10
+                        textarea.form-control(class="description-field",
+                                              placeholder="description")
+                    .buttons.col-xs-2
+                        button.btn.btn-success(class="create",
+                                title="click here to store the bookmark")
+                            .glyphicon.glyphicon-ok-circle
+                        button.btn.btn-danger(class="clean",
+                                              title="click to clean the form")
+                            .glyphicon.glyphicon-remove-circle
 
-    div#bookmark-list
-        h1.title mY BOOkmarks
-        .tools
-            input.search(placeholder="search")
-            button.sort.descending(title="click to sort links",
-                                   data-sort="title")
-                img(src="icons/sort-descending.png", alt="sort")
-        ul.list
+
+    #bookmarks-list
+        .panel.panel-default
+            .panel-heading
+                h3.panel-title
+                    | mY BOOkmarks
+                .row.tools
+                    .form-group.col-xs-4
+                        input.form-control(class="search",
+                                           placeholder="search")
+                    .form-group.col-xs-2
+                        button.btn.btn-primary(class="sort descending",
+                                               title="click to sort links",
+                                               data-sort="title")
+                            .glyphicon.glyphicon-sort
+                            
+            .panel-body
+                ul.list

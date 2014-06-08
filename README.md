@@ -14,6 +14,8 @@ Store all your bookmarks here !
 
 # Changelog
 
+* v0.9.5
+  * update vendor librairies versions + review of UI
 * v0.9.4
   * add an export button
 * v0.9.3
@@ -71,6 +73,5 @@ http://cozycloud.cc
 
 * please, check package.json files
 * main icon from IconTexto (http://icontexto.blogspot.fr/ - CC by-nc-sa)
-* other icons from Gnome Project (http://art.gnome.org/themes/icon - GPL) 
 * alertify.js (http://fabien-d.github.com/alertify.js/ - MIT)
 * List.js (http://listjs.com/ - MIT)

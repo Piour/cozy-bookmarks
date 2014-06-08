@@ -8,8 +8,8 @@ module.exports = class AppView extends View
 
     events:
         "click form .create": "bookmarkLink"
-        "keyup form .title input": "showForm"
-        "click form .title input": "showForm"
+        "keyup form .url-field": "showForm"
+        "click form .url-field": "showForm"
         "click form .title": "toggleForm"
         "click form .clean": "cleanForm"
         "click .import": "import"
@@ -32,23 +32,23 @@ module.exports = class AppView extends View
                 @bookmarksView.$el.find('em').remove()
                 window.sortOptions = {
                     "valueNames": ["title", "url", "tags", "description"] }
-                window.featureList = new List("bookmark-list",
+                window.featureList = new List("bookmarks-list",
                                               window.sortOptions)
                 alertify.log "bookmarks loaded"
 
     showForm: (evt) ->
-        $container = $ "form div.full-form"
-        title     = evt.target.parentNode
+        $container = $ "form .full-form"
+        title     = $(evt.target).parents ".title"
         if !$container.is ":visible"
             title.click()
         false
 
     toggleForm: (evt) ->
-        $container = $ "form div.full-form"
+        $container = $ "form .full-form"
         $title     = $ evt.currentTarget
         $container.toggle "slow", () ->
             if $container.is ":visible"
-                $title.attr "title", "click to hide the form"
+                $title.attr "title", "click to hide the detailed form"
             else
                 $title.attr "title", "click to show the full form"
         false

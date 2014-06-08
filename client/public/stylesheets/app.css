@@ -55,68 +55,76 @@
 			.alertify-button:hover,
 			.alertify-button:focus,
 			.alertify-button:active {
-				margin-left: 10px;
+				/* margin-left: 10px; */
 				border-radius: 4px;
 				font-weight: normal;
 				padding: 4px 12px;
 				text-decoration: none;
+            }
+			.alertify-button:hover {
 				box-shadow: inset 0 1px 0 rgba(255, 255, 255, .2), 0 1px 2px rgba(0, 0, 0, .05);
-				background-image: -webkit-linear-gradient(top, rgba(255,255,255,.3), rgba(255,255,255,0));
+				/* background-image: -webkit-linear-gradient(top, rgba(255,255,255,.3), rgba(255,255,255,0));
 				background-image:    -moz-linear-gradient(top, rgba(255,255,255,.3), rgba(255,255,255,0));
 				background-image:     -ms-linear-gradient(top, rgba(255,255,255,.3), rgba(255,255,255,0));
 				background-image:      -o-linear-gradient(top, rgba(255,255,255,.3), rgba(255,255,255,0));
-				background-image:         linear-gradient(top, rgba(255,255,255,.3), rgba(255,255,255,0));
+				background-image:         linear-gradient(top, rgba(255,255,255,.3), rgba(255,255,255,0)); */
 			}
 			.alertify-button:focus {
 				outline: none;
-				box-shadow: 0 0 5px #2B72D5;
+				/* box-shadow: 0 0 5px #2B72D5; */
 			}
 			.alertify-button:active {
 				position: relative;
-				box-shadow: inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05);
+				/* box-shadow: inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05); */
 			}
 				.alertify-button-cancel,
 				.alertify-button-cancel:hover,
 				.alertify-button-cancel:focus,
 				.alertify-button-cancel:active {
-					text-shadow: 0 -1px 0 rgba(255,255,255,.75);
+					/* text-shadow: 0 -1px 0 rgba(255,255,255,.75);
 					background-color: #E6E6E6;
 					border: 1px solid #BBB;
-					color: #333;
-					background-image: -webkit-linear-gradient(top, #FFF, #E6E6E6);
+					color: #333; */
+					/* background-image: -webkit-linear-gradient(top, #FFF, #E6E6E6);
 					background-image:    -moz-linear-gradient(top, #FFF, #E6E6E6);
 					background-image:     -ms-linear-gradient(top, #FFF, #E6E6E6);
 					background-image:      -o-linear-gradient(top, #FFF, #E6E6E6);
-					background-image:         linear-gradient(top, #FFF, #E6E6E6);
+					background-image:         linear-gradient(top, #FFF, #E6E6E6); */
 				}
 				.alertify-button-cancel:hover,
 				.alertify-button-cancel:focus,
 				.alertify-button-cancel:active {
-					background: #E6E6E6;
+					/* background: #E6E6E6; */
 				}
+				.alertify-button-cancel:hover {
+                    box-shadow: 0 0 5px #E6E6E6;
+                }
 				.alertify-button-ok,
 				.alertify-button-ok:hover,
 				.alertify-button-ok:focus,
 				.alertify-button-ok:active {
-					text-shadow: 0 -1px 0 rgba(0,0,0,.25);
-					background-color: #04C;
-					border: 1px solid #04C;
-					border-color: #04C #04C #002A80;
-					border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-					color: #FFF;
+					/* text-shadow: 0 -1px 0 rgba(0,0,0,.25); */
+					/* background-color: #04C; */
+					/* border: 1px solid #04C; */
+					/* border-color: #04C #04C #002A80; */
+					/* border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25); */
+					/* color: #FFF; */
 				}
 				.alertify-button-ok:hover,
 				.alertify-button-ok:focus,
 				.alertify-button-ok:active {
-					background: #04C;
+					/* background: #04C; */
 				}
+				.alertify-button-ok:hover {
+                    box-shadow: 0 0 5px #2B72D5;
+                }
 
 .alertify-log {
 	background: #D9EDF7;
 	padding: 8px 14px;
 	border-radius: 4px;
 	color: #3A8ABF;
-	text-shadow: 0 1px 0 rgba(255,255,255,.5);
+	/* text-shadow: 0 1px 0 rgba(255,255,255,.5); */
 	border: 1px solid #BCE8F1;
 }
 	.alertify-log-error {
@@ -129,6 +137,7 @@
 		background: #DFF0D8;
 		border: 1px solid #D6E9C6;
 	}
+
 .alertify,
 .alertify-show,
 .alertify-log {
@@ -267,87 +276,6 @@
 	}
 }
 
-/**
- * Default Look and Feel
- */
-.alertify,
-.alertify-log {
-	font-family: sans-serif;
-}
-.alertify {
-	background: #FFF;
-	border: 10px solid #333; /* browsers that don't support rgba */
-	border: 10px solid rgba(0,0,0,.7);
-	border-radius: 8px;
-	box-shadow: 0 3px 3px rgba(0,0,0,.3);
-	-webkit-background-clip: padding;     /* Safari 4? Chrome 6? */
-	   -moz-background-clip: padding;     /* Firefox 3.6 */
-	        background-clip: padding-box; /* Firefox 4, Safari 5, Opera 10, IE 9 */
-}
-	.alertify-text {
-		border: 1px solid #CCC;
-		padding: 10px;
-		border-radius: 4px;
-	}
-	.alertify-button {
-		border-radius: 4px;
-		color: #FFF;
-		font-weight: bold;
-		padding: 6px 15px;
-		text-decoration: none;
-		text-shadow: 1px 1px 0 rgba(0,0,0,.5);
-		box-shadow: inset 0 1px 0 0 rgba(255,255,255,.5);
-		background-image: -webkit-linear-gradient(top, rgba(255,255,255,.3), rgba(255,255,255,0));
-		background-image:    -moz-linear-gradient(top, rgba(255,255,255,.3), rgba(255,255,255,0));
-		background-image:     -ms-linear-gradient(top, rgba(255,255,255,.3), rgba(255,255,255,0));
-		background-image:      -o-linear-gradient(top, rgba(255,255,255,.3), rgba(255,255,255,0));
-		background-image:         linear-gradient(top, rgba(255,255,255,.3), rgba(255,255,255,0));
-	}
-	.alertify-button:hover,
-	.alertify-button:focus {
-		outline: none;
-		background-image: -webkit-linear-gradient(top, rgba(0,0,0,.1), rgba(0,0,0,0));
-		background-image:    -moz-linear-gradient(top, rgba(0,0,0,.1), rgba(0,0,0,0));
-		background-image:     -ms-linear-gradient(top, rgba(0,0,0,.1), rgba(0,0,0,0));
-		background-image:      -o-linear-gradient(top, rgba(0,0,0,.1), rgba(0,0,0,0));
-		background-image:         linear-gradient(top, rgba(0,0,0,.1), rgba(0,0,0,0));
-	}
-	.alertify-button:focus {
-		box-shadow: 0 0 15px #2B72D5;
-	}
-	.alertify-button:active {
-		position: relative;
-		box-shadow: inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05);
-	}
-		.alertify-button-cancel,
-		.alertify-button-cancel:hover,
-		.alertify-button-cancel:focus {
-			background-color: #FE1A00;
-			border: 1px solid #D83526;
-		}
-		.alertify-button-ok,
-		.alertify-button-ok:hover,
-		.alertify-button-ok:focus {
-			background-color: #5CB811;
-			border: 1px solid #3B7808;
-		}
-
-.alertify-log {
-	background: #1F1F1F;
-	background: rgba(0,0,0,.9);
-	padding: 15px;
-	border-radius: 4px;
-	color: #FFF;
-	text-shadow: -1px -1px 0 rgba(0,0,0,.5);
-}
-	.alertify-log-error {
-		background: #FE1A00;
-		background: rgba(254,26,0,.9);
-	}
-	.alertify-log-success {
-		background: #5CB811;
-		background: rgba(92,184,17,.9);
-	}
 /*!
  * Bootstrap v3.1.1 (http://getbootstrap.com)
  * Copyright 2011-2014 Twitter, Inc.
@@ -565,16 +493,51 @@ textarea {
 #content {
   padding: 1em;
 }
-a,
-a:visited {
-  color: #27aaf2;
-  text-decoration: none;
+#content input,
+#content textarea {
+  border: 1px solid #1f1f1f;
+  color: #eee;
 }
-a:focus {
-  outline: none;
+#content .row {
+  margin: 0 0.5em;
 }
-button {
-  background-color: inherit;
+#content .form-control {
+  background: #262626;
+}
+#content .panel {
+  border: 1px solid #1f1f1f;
+  background: #bbb;
+}
+#content .panel-heading {
+  background: #1f1f1f;
+  border: 1px solid #1f1f1f;
+  color: #bbb;
+}
+#content .panel-heading .panel-title {
+  font-weight: bold;
+  font-size: 2em;
+  padding: 0.5em;
+}
+#content .panel-body {
+  background: #1f1f1f;
+  color: #bbb;
+}
+#content .btn {
+  margin: 0 0.5em;
+  padding: 0.1;
+  opacity: 0.8;
+  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
+  filter: alpha(opacity=80);
+  vertical-align: middle;
+}
+#create-bookmark-form textarea {
+  height: 5em;
+}
+#create-bookmark-form .create {
+  font-size: 2.5em;
+}
+#create-bookmark-form .full-form {
+  display: none;
 }
 #bookmarks-file {
   display: none;
@@ -582,9 +545,11 @@ button {
 .import,
 .export {
   position: absolute;
+  top: 1.5em;
 }
 .import button,
 .export button {
+  background: transparent;
   color: #373;
   border: 0;
   font-size: 1.5em;
@@ -600,178 +565,74 @@ button {
   margin: 0;
 }
 .import {
-  top: 1.5em;
-  right: 1.5em;
+  right: 1em;
 }
 .export {
-  top: 1.5em;
   right: 3em;
 }
-#create-bookmark-form {
-  margin: 0;
-  padding: 0 2em;
-  background: #232323;
-  border: 1px solid #262626;
-}
-#create-bookmark-form h1 {
-  cursor: pointer;
-  background: #1f1f1f;
-  border-top: 1px solid #262626;
-  border-bottom: 1px solid #161712;
-  padding: 0.3em 0.5em;
-}
-#create-bookmark-form h1 span {
-  vertical-align: middle;
-}
-#create-bookmark-form h1 input {
-  vertical-align: middle;
-  display: inline-block;
-  margin: 0.5em 1em;
-  padding: 0.5em;
-}
-#create-bookmark-form div.full-form {
-  display: none;
-}
-#create-bookmark-form p {
-  margin: 0;
-  padding: 0;
-}
-#create-bookmark-form p.last {
-  display: inline-block;
-  width: 50em;
-  max-width: 90%;
-  margin: 1em;
-}
-#create-bookmark-form input {
-  display: block;
-  margin: 1em;
-  padding: 0.5em;
-  width: 24em;
-  max-width: 90%;
-  background: #262626;
-  border: 1px double #171717;
-}
-#create-bookmark-form textarea {
-  display: block;
-  height: 5em;
-  padding: 0.5em;
-  margin: 0;
-  width: 100%;
-  background: #262626;
-  border: 1px double #171717;
-}
-#create-bookmark-form .url-field {
-  width: 95%;
-  max-width: 50em;
-}
-#create-bookmark-form .tags-field,
-#create-bookmark-form .title-field {
-  display: inline-block;
-}
-#create-bookmark-form .buttons {
-  display: inline-block;
-  vertical-align: bottom;
-}
-#create-bookmark-form .buttons button {
-  margin: 1em 0;
-  padding: 0.5em 0;
-  border: none;
-}
-#create-bookmark-form .buttons button.clean img {
-  width: 32px;
-  height: 32px;
-}
-#bookmark-list {
-  margin: 2em 0;
-  padding: 0 1em;
-  background: #232323;
-  border: 1px solid #262626;
-}
-#bookmark-list h1 {
-  background: #1f1f1f;
-  border-top: 1px solid #262626;
-  border-bottom: 1px solid #161712;
-  padding: 0.3em;
-}
-#bookmark-list .tools .search {
-  display: inline-block;
-  margin: 1em;
-  padding: 0.5em;
-  width: 90%;
-  max-width: 24em;
-  background: #262626;
-  border: 1px double #171717;
-}
-#bookmark-list .sort {
-  vertical-align: middle;
-  border: none;
-}
-#bookmark-list .sort img {
-  height: 32px;
-  width: 32px;
-}
-#bookmark-list ul {
+#bookmarks-list ul {
   list-style: none;
-  padding: 0 1em;
 }
-#bookmark-list ul li {
-  border-top: 1px solid #666;
+#bookmarks-list li {
+  border-top: 1px solid #333;
   padding: 0.5em 0;
 }
-#bookmark-list .bookmark {
-  vertical-align: top;
-  margin: 0.5em 0;
-}
-#bookmark-list .bookmark .buttons {
-  padding: 0;
+#bookmarks-list .bookmark .btn {
+  visibility: hidden;
   margin: 0;
+  padding: 0.1em;
+}
+#bookmarks-list .bookmark .btn div {
+  vertical-align: initial;
+}
+#bookmarks-list .bookmark:hover .btn {
+  visibility: visible;
+}
+#bookmarks-list .bookmark div {
   display: inline-block;
-}
-#bookmark-list .bookmark .buttons button {
-  vertical-align: top;
-  border: none;
-}
-#bookmark-list .bookmark .buttons button img {
-  height: 32px;
-  width: 32px;
-}
-#bookmark-list .bookmark .title {
-  font-weight: bold;
-  display: inline-block;
-  padding: 0.2em;
-  margin: 0.2em 0.2em 0.2em 0.5em;
-}
-#bookmark-list .bookmark .info {
-  white-space: nowrap;
-  display: inline-block;
-  max-width: 65%;
-  margin: 0.2em 0.2em 0.2em 0.5em;
-}
-#bookmark-list .bookmark .info div {
   max-width: 65%;
   margin: 0 0.5em;
   white-space: normal;
-  vertical-align: top;
-  display: inline-block;
+  vertical-align: middle;
 }
-#bookmark-list .bookmark .info div.full {
+#bookmarks-list .bookmark div.full {
   max-width: 80%;
 }
-#bookmark-list .bookmark .info .url {
+#bookmarks-list .bookmark .description {
+  margin: 0.5em 4em;
+}
+#bookmarks-list .bookmark .info {
+  white-space: nowrap;
+  max-width: 65%;
+}
+#bookmarks-list .bookmark .url {
   max-width: 30%;
   overflow: hidden;
   white-space: nowrap;
   -o-text-overflow: ellipsis;
   text-overflow: ellipsis;
 }
-#bookmark-list .bookmark .info .url:hover {
+#bookmarks-list .bookmark .url:hover {
   white-space: normal;
   max-width: none;
-  -o-text-overflow: inherit;
-  text-overflow: inherit;
 }
-#bookmark-list .bookmark .description {
-  margin: 20px;
+.alertify-dialog,
+.alertify-buttons,
+.alertify-log {
+  background: #000;
+  opacity: 0.8;
+  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
+  filter: alpha(opacity=80);
+  text-align: center;
+  color: #bbb;
+}
+.alertify-button-ok: {
+  background: #000;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+.alertify-message {
+  font-size: 1.5em;
 }
 
 .chromeframe { margin: 0.2em 0; background: #ccc; color: #000; padding: 0.2em 0; }

@@ -462,8 +462,8 @@ module.exports = AppView = (function(_super) {
 
   AppView.prototype.events = {
     "click form .create": "bookmarkLink",
-    "keyup form .title input": "showForm",
-    "click form .title input": "showForm",
+    "keyup form .url-field": "showForm",
+    "click form .url-field": "showForm",
     "click form .title": "toggleForm",
     "click form .clean": "cleanForm",
     "click .import": "import",
@@ -490,7 +490,7 @@ module.exports = AppView = (function(_super) {
         window.sortOptions = {
           "valueNames": ["title", "url", "tags", "description"]
         };
-        window.featureList = new List("bookmark-list", window.sortOptions);
+        window.featureList = new List("bookmarks-list", window.sortOptions);
         return alertify.log("bookmarks loaded");
       }
     });
@@ -498,8 +498,8 @@ module.exports = AppView = (function(_super) {
 
   AppView.prototype.showForm = function(evt) {
     var $container, title;
-    $container = $("form div.full-form");
-    title = evt.target.parentNode;
+    $container = $("form .full-form");
+    title = $(evt.target).parents(".title");
     if (!$container.is(":visible")) {
       title.click();
     }
@@ -508,11 +508,11 @@ module.exports = AppView = (function(_super) {
 
   AppView.prototype.toggleForm = function(evt) {
     var $container, $title;
-    $container = $("form div.full-form");
+    $container = $("form .full-form");
     $title = $(evt.currentTarget);
     $container.toggle("slow", function() {
       if ($container.is(":visible")) {
-        return $title.attr("title", "click to hide the form");
+        return $title.attr("title", "click to hide the detailed form");
       } else {
         return $title.attr("title", "click to show the full form");
       }
@@ -690,6 +690,7 @@ module.exports = BookmarkView = (function(_super) {
     $(".title-field").val(this.$el.find(".title a").text());
     $(".tags-field").val(this.$el.find(".tags").text());
     $(".description-field").val(this.$el.find(".description").text());
+    $(".full-form").show();
     return this.model.destroy({
       success: function() {
         _this.destroy();
@@ -730,7 +731,7 @@ module.exports = BookmarksView = (function(_super) {
     return BookmarksView.__super__.constructor.apply(this, arguments);
   }
 
-  BookmarksView.prototype.el = '#bookmark-list .list';
+  BookmarksView.prototype.el = '#bookmarks-list .list';
 
   BookmarksView.prototype.view = BookmarkView;
 
@@ -765,7 +766,7 @@ attrs = attrs || jade.attrs; escape = escape || jade.escape; rethrow = rethrow |
 var buf = [];
 with (locals || {}) {
 var interp;
-buf.push('<div class="buttons"><button title="click to remove this link from saved bookmarks and place its details into the form" class="delete"><img src="icons/delete.png" alt="delete"/></button></div>');
+buf.push('<div class="buttons"><button title="click to remove this link from saved bookmarks and place its details into the form" class="btn btn-danger delete"><div class="glyphicon glyphicon-share"></div></button></div>');
 if ( model.title)
 {
 buf.push('<div class="title"><a');
@@ -814,7 +815,7 @@ attrs = attrs || jade.attrs; escape = escape || jade.escape; rethrow = rethrow |
 var buf = [];
 with (locals || {}) {
 var interp;
-buf.push('<div id="content"><input type="file" name="bookmarks-file" id="bookmarks-file"/><span class="import"><button title="import html bookmarks files exported from your browser" class="glyphicon glyphicon-upload icon-import"></button><p class="imported"></p><p class="importe-failed"></p></span><span class="export"><button title="export bookmarks in html" class="glyphicon glyphicon-download icon-export"></button></span><form id="create-bookmark-form"><h1 title="click to show the full form" class="title"><span>Bookmark a link</span><input title="click to show the full form" placeholder="url" class="url-field"/></h1><div class="full-form"><p><input placeholder="title" class="title-field"/><input placeholder="tags, separated by \',\'" class="tags-field"/></p><p class="last"><textarea placeholder="description" class="description-field"></textarea></p><div class="buttons"><button title="click here to store the bookmark" class="create"><img src="icons/add.png" alt="add"/></button><button title="click to clean the form" class="clean"><img src="icons/clean.png" alt="clean"/></button></div></div></form><div id="bookmark-list"><h1 class="title">mY BOOkmarks</h1><div class="tools"><input placeholder="search" class="search"/><button title="click to sort links" data-sort="title" class="sort descending"><img src="icons/sort-descending.png" alt="sort"/></button></div><ul class="list"></ul></div></div>');
+buf.push('<div id="content"><input type="file" name="bookmarks-file" id="bookmarks-file"/><span class="import"><button title="import html bookmarks files exported from your browser" class="glyphicon glyphicon-upload icon-import"></button><p class="imported"></p><p class="importe-failed"></p></span><span class="export"><button title="export bookmarks in html" class="glyphicon glyphicon-download icon-export"></button></span><form id="create-bookmark-form" role="form"><div class="panel panel-default"><div class="panel-heading title"><h3 title="click to show the full form" class="panel-title"> \nBookmark a link</h3><div class="row"><div class="form-group col-xs-8"><input placeholder="url" class="form-control url-field"/></div></div></div><div class="panel-body full-form"><div class="row"><div class="form-group col-xs-5"><input placeholder="title" class="form-control title-field"/></div><div class="form-group col-xs-5"><input placeholder="tags, separated by \',\'" class="form-control tags-field"/></div></div><div class="row"><div class="form-group col-xs-10"><textarea placeholder="description" class="form-control description-field"></textarea></div><div class="buttons col-xs-2"><button title="click here to store the bookmark" class="btn btn-success create"><div class="glyphicon glyphicon-ok-circle"></div></button><button title="click to clean the form" class="btn btn-danger clean"><div class="glyphicon glyphicon-remove-circle"></div></button></div></div></div></div></form><div id="bookmarks-list"><div class="panel panel-default"><div class="panel-heading"><h3 class="panel-title">mY BOOkmarks</h3><div class="row tools"><div class="form-group col-xs-4"><input placeholder="search" class="form-control search"/></div><div class="form-group col-xs-2"><button title="click to sort links" data-sort="title" class="btn btn-primary sort descending"><div class="glyphicon glyphicon-sort"></div></button></div></div></div><div class="panel-body"><ul class="list"></ul></div></div></div></div>');
 }
 return buf.join("");
 };

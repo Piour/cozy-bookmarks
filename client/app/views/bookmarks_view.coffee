@@ -1,9 +1,9 @@
-ViewCollection = require '../lib/view_collection'
-BookmarkView  = require './bookmark_view'
+ViewCollection     = require '../lib/view_collection'
+BookmarkView       = require './bookmark_view'
 BookmarkCollection = require '../collections/bookmark_collection'
 
 module.exports = class BookmarksView extends ViewCollection
-    el: '#bookmark-list .list'
+    el: '#bookmarks-list .list'
 
     view: BookmarkView
 

@@ -24,6 +24,7 @@ module.exports = class BookmarkView extends View
         $(".title-field").val(@$el.find(".title a").text())
         $(".tags-field").val(@$el.find(".tags").text())
         $(".description-field").val(@$el.find(".description").text())
+        $(".full-form").show()
         @model.destroy
             success: =>
                 @destroy()
