@@ -51,6 +51,12 @@ Store all your bookmarks here !
   * store tags, description of bookmarks
   * search, sort bookmarks
 
+# Contributors
+
+* Pierre (https://github.com/Piour)
+* Benjamin (https://github.com/bnjbvr)
+* Joseph (https://github.com/jsilvestre)
+
 # About Cozy
 
 This app is suited to be deployed on the Cozy platform. Cozy is the personal
