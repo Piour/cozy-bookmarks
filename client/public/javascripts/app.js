@@ -766,43 +766,30 @@ attrs = attrs || jade.attrs; escape = escape || jade.escape; rethrow = rethrow |
 var buf = [];
 with (locals || {}) {
 var interp;
-buf.push('<div class="buttons"><button title="Remove this link from saved bookmarks and place its details into the form" class="glyphicon glyphicon-share delete"></button></div>');
+buf.push('<div class="buttons"><button title="Remove this link from saved bookmarks and place its details into the form" class="glyphicon glyphicon-share delete"></button></div><div class="all">');
 if ( model.title)
 {
 buf.push('<div class="title"><a');
 buf.push(attrs({ 'href':("" + (model.httpUrl) + "") }, {"href":true}));
-buf.push('>' + escape((interp = model.title) == null ? '' : interp) + '</a></div>');
+buf.push('>' + escape((interp = model.title) == null ? '' : interp) + '</a></div><div class="url"><a');
+buf.push(attrs({ 'href':("" + (model.httpUrl) + "") }, {"href":true}));
+buf.push('>' + escape((interp = model.url) == null ? '' : interp) + '</a></div>');
 }
 else
 {
 buf.push('<div class="title"><a');
 buf.push(attrs({ 'href':("" + (model.httpUrl) + "") }, {"href":true}));
 buf.push('>' + escape((interp = model.url) == null ? '' : interp) + '</a></div>');
-}
-buf.push('<div class="info">');
-if ( model.title)
-{
-if ( model.tags.length)
-{
-buf.push('<div class="tags">' + escape((interp = model.readableTags) == null ? '' : interp) + '</div><div class="url"><a');
-buf.push(attrs({ 'href':("" + (model.httpUrl) + "") }, {"href":true}));
-buf.push('>' + escape((interp = model.url) == null ? '' : interp) + '</a></div>');
-}
-else
-{
-buf.push('<div class="url full"><a');
-buf.push(attrs({ 'href':("" + (model.httpUrl) + "") }, {"href":true}));
-buf.push('>' + escape((interp = model.url) == null ? '' : interp) + '</a></div>');
-}
-}
-else
-{
-buf.push('<div class="tags full">' + escape((interp = model.readableTags) == null ? '' : interp) + '</div>');
 }
 buf.push('</div>');
-if ( model.description)
+if ( model.description || model.tags.length)
 {
-buf.push('<p class="description">' + escape((interp = model.description) == null ? '' : interp) + '</p>');
+buf.push('<div class="description"> <p>' + escape((interp = model.description) == null ? '' : interp) + '</p>');
+if ( model.tags.length)
+{
+buf.push('<div class="tags">tags: ' + escape((interp = model.readableTags) == null ? '' : interp) + '</div>');
+}
+buf.push('</div>');
 }
 }
 return buf.join("");

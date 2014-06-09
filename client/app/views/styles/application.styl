@@ -119,30 +119,33 @@ body.application, input, textarea
                 visibility: visible
         div
             display: inline-block
-            max-width: 65%
-            margin: .0 .5em
+            margin: 0 0 0 .5em
+            vertical-align: top
+
+        .title
+            max-width: 60%
             white-space: normal
-            vertical-align: middle
+        .all
+            max-width: 95%
+            white-space: nowrap
+        .url
+            opacity: 0.5
+            max-width: 35%
+            overflow: hidden
+            text-overflow: ellipsis
+            &:hover
             &.full
-                max-width: 80%
+                color: #eee
+                white-space: normal
+                max-width: none
         .description
+            display: block
             margin: .5em 4em
             color: #eee
             border-radius: 4px
             background: #262626
             padding: .5em
             opacity: 0.5
-        .info
-            white-space: nowrap
-            max-width: 65%
-        .url
-            max-width: 30%
-            overflow: hidden
-            white-space: nowrap
-            text-overflow: ellipsis
-            &:hover
-                white-space: normal
-                max-width: none
 
 .alertify-dialog, .alertify-buttons, .alertify-log
     background: #000

@@ -616,15 +616,34 @@ textarea {
 }
 #bookmarks-list .bookmark div {
   display: inline-block;
-  max-width: 65%;
-  margin: 0 0.5em;
-  white-space: normal;
-  vertical-align: middle;
+  margin: 0 0 0 0.5em;
+  vertical-align: top;
 }
-#bookmarks-list .bookmark div.full {
-  max-width: 80%;
+#bookmarks-list .bookmark .title {
+  max-width: 60%;
+  white-space: normal;
+}
+#bookmarks-list .bookmark .all {
+  max-width: 95%;
+  white-space: nowrap;
+}
+#bookmarks-list .bookmark .url {
+  opacity: 0.5;
+  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
+  filter: alpha(opacity=50);
+  max-width: 35%;
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+}
+#bookmarks-list .bookmark .url:hover,
+#bookmarks-list .bookmark .url.full {
+  color: #eee;
+  white-space: normal;
+  max-width: none;
 }
 #bookmarks-list .bookmark .description {
+  display: block;
   margin: 0.5em 4em;
   color: #eee;
   -webkit-border-radius: 4px;
@@ -634,21 +653,6 @@ textarea {
   opacity: 0.5;
   -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
   filter: alpha(opacity=50);
-}
-#bookmarks-list .bookmark .info {
-  white-space: nowrap;
-  max-width: 65%;
-}
-#bookmarks-list .bookmark .url {
-  max-width: 30%;
-  overflow: hidden;
-  white-space: nowrap;
-  -o-text-overflow: ellipsis;
-  text-overflow: ellipsis;
-}
-#bookmarks-list .bookmark .url:hover {
-  white-space: normal;
-  max-width: none;
 }
 .alertify-dialog,
 .alertify-buttons,
