@@ -1,7 +1,8 @@
 .buttons
-    button.btn.btn-danger(class="delete"
-            title="click to remove this link from saved bookmarks and place its details into the form")
-        .glyphicon.glyphicon-share
+    button.glyphicon.glyphicon-share(
+        class="delete"
+        title="Remove this link from saved bookmarks and place its details into the form")
+        
 if model.title
     .title
         a(href="#{model.httpUrl}") #{model.title}

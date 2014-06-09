@@ -9,7 +9,8 @@
 @import '_layout'
 @import '_responsive'
 
-main-color = #bbb
+main-color   = #bbb
+danger-color = #d9534f
 
 body.application, input, textarea
     color: main-color;
@@ -39,42 +40,55 @@ body.application, input, textarea
     .panel-body
         background: #1f1f1f
         color: main-color
-    .btn
+    button
         margin: 0 .5em
-        padding: 0.1
-        opacity: 0.8
+        padding: 0
         vertical-align: middle
+        &:hover
+            opacity: 0.8
+
+    span.import
+    span.export
+        position: absolute
+        top: 1.5em
+        button
+            background: transparent
+            color: #373
+            border: 0
+            padding: 0
+            margin: 0
+            font-size: 1.25em
+        .import-failed
+            padding: -1
+            margin: 0
+        .imported
+            padding: 0
+            margin: 0
+    span.import
+        right: 1.5em
+    span.export
+        right: 3em
 
 #create-bookmark-form
     textarea
         height: 5em
-    .create
-        font-size: 2.5em
     .full-form
         display: none
+    button.create
+        font-size: 3em
+        background: transparent
+        color: #5cb85c
+        border: none
+        margin-left: 0
+        margin-right: 1em
+    button.clean
+        background: transparent
+        color: danger-color
+        border: none
 
 #bookmarks-file
     display: none
 
-.import
-.export
-    position: absolute
-    top: 1.5em
-    button
-        background: transparent
-        color: #373
-        border: 0
-        font-size: 1.5em
-    .import-failed
-        padding: 0
-        margin: 0
-    .imported
-        padding: 0
-        margin: 0
-.import
-    right: 1em
-.export
-    right: 3em
 
 #bookmarks-list
     ul
@@ -82,15 +96,26 @@ body.application, input, textarea
     li
         border-top: 1px solid #333
         padding: .5em 0;
+    .tools
+        .form-group
+            width: 20em
+            display: inline-block
+        button.sort
+            color: #428bca
+            background: transparent
+            border: none
     .bookmark
-        .btn
+        .delete
+            background: transparent
+            color: danger-color
+            border: none
             visibility: hidden
             margin: 0
             padding: 0.1em
             div
                 vertical-align: initial
         &:hover
-            .btn
+            .delete
                 visibility: visible
         div
             display: inline-block
@@ -102,6 +127,11 @@ body.application, input, textarea
                 max-width: 80%
         .description
             margin: .5em 4em
+            color: #eee
+            border-radius: 4px
+            background: #262626
+            padding: .5em
+            opacity: 0.5
         .info
             white-space: nowrap
             max-width: 65%

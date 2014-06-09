@@ -522,53 +522,67 @@ textarea {
   background: #1f1f1f;
   color: #bbb;
 }
-#content .btn {
+#content button {
   margin: 0 0.5em;
-  padding: 0.1;
+  padding: 0;
+  vertical-align: middle;
+}
+#content button:hover {
   opacity: 0.8;
   -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
   filter: alpha(opacity=80);
-  vertical-align: middle;
+}
+#content span.import,
+#content span.export {
+  position: absolute;
+  top: 1.5em;
+}
+#content span.import button,
+#content span.export button {
+  background: transparent;
+  color: #373;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  font-size: 1.25em;
+}
+#content span.import .import-failed,
+#content span.export .import-failed {
+  padding: -1;
+  margin: 0;
+}
+#content span.import .imported,
+#content span.export .imported {
+  padding: 0;
+  margin: 0;
+}
+#content span.import {
+  right: 1.5em;
+}
+#content span.export {
+  right: 3em;
 }
 #create-bookmark-form textarea {
   height: 5em;
 }
-#create-bookmark-form .create {
-  font-size: 2.5em;
-}
 #create-bookmark-form .full-form {
   display: none;
 }
+#create-bookmark-form button.create {
+  font-size: 3em;
+  background: transparent;
+  color: #5cb85c;
+  border: none;
+  margin-left: 0;
+  margin-right: 1em;
+}
+#create-bookmark-form button.clean {
+  background: transparent;
+  color: #d9534f;
+  border: none;
+}
 #bookmarks-file {
   display: none;
-}
-.import,
-.export {
-  position: absolute;
-  top: 1.5em;
-}
-.import button,
-.export button {
-  background: transparent;
-  color: #373;
-  border: 0;
-  font-size: 1.5em;
-}
-.import .import-failed,
-.export .import-failed {
-  padding: 0;
-  margin: 0;
-}
-.import .imported,
-.export .imported {
-  padding: 0;
-  margin: 0;
-}
-.import {
-  right: 1em;
-}
-.export {
-  right: 3em;
 }
 #bookmarks-list ul {
   list-style: none;
@@ -577,15 +591,27 @@ textarea {
   border-top: 1px solid #333;
   padding: 0.5em 0;
 }
-#bookmarks-list .bookmark .btn {
+#bookmarks-list .tools .form-group {
+  width: 20em;
+  display: inline-block;
+}
+#bookmarks-list .tools button.sort {
+  color: #428bca;
+  background: transparent;
+  border: none;
+}
+#bookmarks-list .bookmark .delete {
+  background: transparent;
+  color: #d9534f;
+  border: none;
   visibility: hidden;
   margin: 0;
   padding: 0.1em;
 }
-#bookmarks-list .bookmark .btn div {
+#bookmarks-list .bookmark .delete div {
   vertical-align: initial;
 }
-#bookmarks-list .bookmark:hover .btn {
+#bookmarks-list .bookmark:hover .delete {
   visibility: visible;
 }
 #bookmarks-list .bookmark div {
@@ -600,6 +626,14 @@ textarea {
 }
 #bookmarks-list .bookmark .description {
   margin: 0.5em 4em;
+  color: #eee;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  background: #262626;
+  padding: 0.5em;
+  opacity: 0.5;
+  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
+  filter: alpha(opacity=50);
 }
 #bookmarks-list .bookmark .info {
   white-space: nowrap;

@@ -2,18 +2,18 @@
     input(type="file", name="bookmarks-file", id="bookmarks-file")
     span.import
         button.glyphicon.glyphicon-upload(
-            title="import html bookmarks files exported from your browser",
-            class="icon-import")
-        p.imported
-        p.importe-failed
+                title="import html bookmarks files exported from your browser",
+                class="import")
+            p.imported
+            p.importe-failed
     span.export
         button.glyphicon.glyphicon-download(title="export bookmarks in html",
-                                            class="icon-export")
+                                            class="export")
 
     form#create-bookmark-form(role="form")
         .panel.panel-default
             .panel-heading(class="title")
-                h3.panel-title(title="click to show the full form") 
+                h3.panel-title(title="Show the full form") 
                     | Bookmark a link
                 .row
                     .form-group.col-xs-8
@@ -32,12 +32,14 @@
                         textarea.form-control(class="description-field",
                                               placeholder="description")
                     .buttons.col-xs-2
-                        button.btn.btn-success(class="create",
-                                title="click here to store the bookmark")
-                            .glyphicon.glyphicon-ok-circle
-                        button.btn.btn-danger(class="clean",
-                                              title="click to clean the form")
-                            .glyphicon.glyphicon-remove-circle
+                        button.glyphicon.glyphicon-ok-circle(
+                            class="create",
+                            title="Save the bookmark")
+                            
+                        button.glyphicon.glyphicon-remove-circle(
+                            class="clean",
+                            title="Clean the form")
+                            
 
 
     #bookmarks-list
@@ -45,15 +47,16 @@
             .panel-heading
                 h3.panel-title
                     | mY BOOkmarks
-                .row.tools
-                    .form-group.col-xs-4
-                        input.form-control(class="search",
-                                           placeholder="search")
-                    .form-group.col-xs-2
-                        button.btn.btn-primary(class="sort descending",
-                                               title="click to sort links",
-                                               data-sort="title")
-                            .glyphicon.glyphicon-sort
+                .row
+                    .tools.col-xs-12
+                        .form-group
+                            input.form-control(class="search",
+                                               placeholder="search")
+                        button.glyphicon.glyphicon-sort(
+                            class="sort descending",
+                            title="Sort links",
+                            data-sort="title")
+                            
                             
             .panel-body
                 ul.list
