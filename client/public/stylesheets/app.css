@@ -623,6 +623,9 @@ textarea {
   max-width: 60%;
   white-space: normal;
 }
+#bookmarks-list .bookmark .title.full {
+  max-width: auto;
+}
 #bookmarks-list .bookmark .all {
   max-width: 95%;
   white-space: nowrap;

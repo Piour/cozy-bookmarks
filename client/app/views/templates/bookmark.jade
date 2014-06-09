@@ -10,7 +10,7 @@
             .url
                 a(href="#{model.httpUrl}") #{model.url}
     else
-        .title
+        .title.full
             a(href="#{model.httpUrl}") #{model.url}
 if model.description || model.tags.length
     .description 

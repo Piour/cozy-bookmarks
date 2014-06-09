@@ -777,7 +777,7 @@ buf.push('>' + escape((interp = model.url) == null ? '' : interp) + '</a></div>'
 }
 else
 {
-buf.push('<div class="title"><a');
+buf.push('<div class="title full"><a');
 buf.push(attrs({ 'href':("" + (model.httpUrl) + "") }, {"href":true}));
 buf.push('>' + escape((interp = model.url) == null ? '' : interp) + '</a></div>');
 }
