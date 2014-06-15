@@ -657,6 +657,9 @@ textarea {
   -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
   filter: alpha(opacity=50);
 }
+#bookmarks-list .bookmark .description .tags {
+  margin-bottom: 0.5em;
+}
 .alertify-dialog,
 .alertify-buttons,
 .alertify-log {

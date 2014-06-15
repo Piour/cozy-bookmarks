@@ -689,7 +689,7 @@ module.exports = BookmarkView = (function(_super) {
     $(".url-field").val(this.$el.find(".title a").attr("href"));
     $(".title-field").val(this.$el.find(".title a").text());
     $(".tags-field").val(this.$el.find(".tags").text());
-    $(".description-field").val(this.$el.find(".description").text());
+    $(".description-field").val(this.$el.find(".description p").text());
     $(".full-form").show();
     return this.model.destroy({
       success: function() {
@@ -784,12 +784,12 @@ buf.push('>' + escape((interp = model.url) == null ? '' : interp) + '</a></div>'
 buf.push('</div>');
 if ( model.description || model.tags.length)
 {
-buf.push('<div class="description"> <p>' + escape((interp = model.description) == null ? '' : interp) + '</p>');
+buf.push('<div class="description"> ');
 if ( model.tags.length)
 {
 buf.push('<div class="tags">tags: ' + escape((interp = model.readableTags) == null ? '' : interp) + '</div>');
 }
-buf.push('</div>');
+buf.push('<p>' + escape((interp = model.description) == null ? '' : interp) + '</p></div>');
 }
 }
 return buf.join("");
