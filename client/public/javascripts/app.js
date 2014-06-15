@@ -688,7 +688,7 @@ module.exports = BookmarkView = (function(_super) {
     title = this.$el.find(".title").html();
     $(".url-field").val(this.$el.find(".title a").attr("href"));
     $(".title-field").val(this.$el.find(".title a").text());
-    $(".tags-field").val(this.$el.find(".tags").text());
+    $(".tags-field").val(this.$el.find(".tags span").text());
     $(".description-field").val(this.$el.find(".description p").text());
     $(".full-form").show();
     return this.model.destroy({
@@ -787,7 +787,7 @@ if ( model.description || model.tags.length)
 buf.push('<div class="description"> ');
 if ( model.tags.length)
 {
-buf.push('<div class="tags">tags: ' + escape((interp = model.readableTags) == null ? '' : interp) + '</div>');
+buf.push('<div class="tags">tags: <span>' + escape((interp = model.readableTags) == null ? '' : interp) + '</span></div>');
 }
 buf.push('<p>' + escape((interp = model.description) == null ? '' : interp) + '</p></div>');
 }

@@ -22,7 +22,7 @@ module.exports = class BookmarkView extends View
         title = @$el.find(".title").html()
         $(".url-field").val(@$el.find(".title a").attr("href"))
         $(".title-field").val(@$el.find(".title a").text())
-        $(".tags-field").val(@$el.find(".tags").text())
+        $(".tags-field").val(@$el.find(".tags span").text())
         $(".description-field").val(@$el.find(".description p").text())
         $(".full-form").show()
         @model.destroy

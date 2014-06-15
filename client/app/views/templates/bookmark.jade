@@ -15,5 +15,6 @@
 if model.description || model.tags.length
     .description 
         if model.tags.length
-            .tags tags: #{model.readableTags}
+            .tags tags: 
+                span #{model.readableTags}
         p #{model.description}
