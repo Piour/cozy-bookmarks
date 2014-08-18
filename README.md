@@ -14,6 +14,8 @@ Store all your bookmarks here !
 
 # Changelog
 
+* v0.9.6
+  * open links in a new window
 * v0.9.5
   * update vendor librairies versions + review of UI
 * v0.9.4
