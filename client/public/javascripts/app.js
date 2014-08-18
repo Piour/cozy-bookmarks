@@ -770,15 +770,15 @@ buf.push('<div class="buttons"><button title="Remove this link from saved bookma
 if ( model.title)
 {
 buf.push('<div class="title"><a');
-buf.push(attrs({ 'href':("" + (model.httpUrl) + "") }, {"href":true}));
+buf.push(attrs({ 'href':("" + (model.httpUrl) + ""), 'target':("_blank") }, {"href":true,"target":true}));
 buf.push('>' + escape((interp = model.title) == null ? '' : interp) + '</a></div><div class="url"><a');
-buf.push(attrs({ 'href':("" + (model.httpUrl) + "") }, {"href":true}));
+buf.push(attrs({ 'href':("" + (model.httpUrl) + ""), 'target':("_blank") }, {"href":true,"target":true}));
 buf.push('>' + escape((interp = model.url) == null ? '' : interp) + '</a></div>');
 }
 else
 {
 buf.push('<div class="title full"><a');
-buf.push(attrs({ 'href':("" + (model.httpUrl) + "") }, {"href":true}));
+buf.push(attrs({ 'href':("" + (model.httpUrl) + ""), 'target':("_blank") }, {"href":true,"target":true}));
 buf.push('>' + escape((interp = model.url) == null ? '' : interp) + '</a></div>');
 }
 buf.push('</div>');

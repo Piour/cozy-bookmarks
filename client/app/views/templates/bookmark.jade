@@ -6,12 +6,12 @@
 .all
     if model.title
             .title
-                a(href="#{model.httpUrl}") #{model.title}
+                a(href="#{model.httpUrl}", target="_blank") #{model.title}
             .url
-                a(href="#{model.httpUrl}") #{model.url}
+                a(href="#{model.httpUrl}", target="_blank") #{model.url}
     else
         .title.full
-            a(href="#{model.httpUrl}") #{model.url}
+            a(href="#{model.httpUrl}", target="_blank") #{model.url}
 if model.description || model.tags.length
     .description 
         if model.tags.length
