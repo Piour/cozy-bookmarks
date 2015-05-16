@@ -92,14 +92,13 @@
 })();
 require.register("collections/bookmark_collection", function(exports, require, module) {
 var Bookmark, BookmarkCollection,
-  __hasProp = {}.hasOwnProperty,
-  __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
+  extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+  hasProp = {}.hasOwnProperty;
 
 Bookmark = require('../models/bookmark');
 
-module.exports = BookmarkCollection = (function(_super) {
-
-  __extends(BookmarkCollection, _super);
+module.exports = BookmarkCollection = (function(superClass) {
+  extend(BookmarkCollection, superClass);
 
   BookmarkCollection.prototype.model = Bookmark;
 
@@ -119,25 +118,23 @@ module.exports = BookmarkCollection = (function(_super) {
 });
 
 ;require.register("initialize", function(exports, require, module) {
-var _ref, _ref1, _ref2, _ref3, _ref4;
-
-if ((_ref = this.CozyApp) == null) {
+if (this.CozyApp == null) {
   this.CozyApp = {};
 }
 
-if ((_ref1 = CozyApp.Routers) == null) {
+if (CozyApp.Routers == null) {
   CozyApp.Routers = {};
 }
 
-if ((_ref2 = CozyApp.Views) == null) {
+if (CozyApp.Views == null) {
   CozyApp.Views = {};
 }
 
-if ((_ref3 = CozyApp.Models) == null) {
+if (CozyApp.Models == null) {
   CozyApp.Models = {};
 }
 
-if ((_ref4 = CozyApp.Collections) == null) {
+if (CozyApp.Collections == null) {
   CozyApp.Collections = {};
 }
 
@@ -154,21 +151,18 @@ $(function() {
 });
 
 ;require.register("lib/app_helpers", function(exports, require, module) {
-
 (function() {
   return (function() {
-    var console, dummy, method, methods, _results;
+    var console, dummy, method, methods, results;
     console = window.console = window.console || {};
     method = void 0;
     dummy = function() {};
-    methods = 'assert,count,debug,dir,dirxml,error,exception,\
-                   group,groupCollapsed,groupEnd,info,log,markTimeline,\
-                   profile,profileEnd,time,timeEnd,trace,warn'.split(',');
-    _results = [];
+    methods = 'assert,count,debug,dir,dirxml,error,exception, group,groupCollapsed,groupEnd,info,log,markTimeline, profile,profileEnd,time,timeEnd,trace,warn'.split(',');
+    results = [];
     while (method = methods.pop()) {
-      _results.push(console[method] = console[method] || dummy);
+      results.push(console[method] = console[method] || dummy);
     }
-    return _results;
+    return results;
   })();
 })();
 
@@ -176,12 +170,11 @@ $(function() {
 
 ;require.register("lib/view", function(exports, require, module) {
 var View,
-  __hasProp = {}.hasOwnProperty,
-  __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
+  extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+  hasProp = {}.hasOwnProperty;
 
-module.exports = View = (function(_super) {
-
-  __extends(View, _super);
+module.exports = View = (function(superClass) {
+  extend(View, superClass);
 
   function View() {
     return View.__super__.constructor.apply(this, arguments);
@@ -196,9 +189,9 @@ module.exports = View = (function(_super) {
   };
 
   View.prototype.getRenderData = function() {
-    var _ref;
+    var ref;
     return {
-      model: (_ref = this.model) != null ? _ref.toJSON() : void 0
+      model: (ref = this.model) != null ? ref.toJSON() : void 0
     };
   };
 
@@ -228,20 +221,18 @@ module.exports = View = (function(_super) {
 
 ;require.register("lib/view_collection", function(exports, require, module) {
 var View, ViewCollection, methods,
-  __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
-  __hasProp = {}.hasOwnProperty,
-  __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
+  bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
+  extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+  hasProp = {}.hasOwnProperty;
 
 View = require('./view');
 
-ViewCollection = (function(_super) {
-
-  __extends(ViewCollection, _super);
+ViewCollection = (function(superClass) {
+  extend(ViewCollection, superClass);
 
   function ViewCollection() {
-    this.renderAll = __bind(this.renderAll, this);
-
-    this.renderOne = __bind(this.renderOne, this);
+    this.renderAll = bind(this.renderAll, this);
+    this.renderOne = bind(this.renderOne, this);
     return ViewCollection.__super__.constructor.apply(this, arguments);
   }
 
@@ -256,13 +247,13 @@ ViewCollection = (function(_super) {
   };
 
   ViewCollection.prototype.add = function(views, options) {
-    var view, _i, _len;
+    var i, len, view;
     if (options == null) {
       options = {};
     }
     views = _.isArray(views) ? views.slice() : [views];
-    for (_i = 0, _len = views.length; _i < _len; _i++) {
-      view = views[_i];
+    for (i = 0, len = views.length; i < len; i++) {
+      view = views[i];
       if (!this.get(view.cid)) {
         this.views.push(view);
         if (!options.silent) {
@@ -280,13 +271,13 @@ ViewCollection = (function(_super) {
   };
 
   ViewCollection.prototype.remove = function(views, options) {
-    var view, _i, _len;
+    var i, len, view;
     if (options == null) {
       options = {};
     }
     views = _.isArray(views) ? views.slice() : [views];
-    for (_i = 0, _len = views.length; _i < _len; _i++) {
-      view = views[_i];
+    for (i = 0, len = views.length; i < len; i++) {
+      view = views[i];
       this.destroy(view);
       if (!options.silent) {
         this.trigger('remove', view, this);
@@ -318,19 +309,19 @@ ViewCollection = (function(_super) {
   };
 
   ViewCollection.prototype.reset = function(views, options) {
-    var view, _i, _j, _len, _len1, _ref;
+    var i, j, len, len1, ref, view;
     if (options == null) {
       options = {};
     }
     views = _.isArray(views) ? views.slice() : [views];
-    _ref = this.views;
-    for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-      view = _ref[_i];
+    ref = this.views;
+    for (i = 0, len = ref.length; i < len; i++) {
+      view = ref[i];
       this.destroy(view, options);
     }
     if (views.length !== 0) {
-      for (_j = 0, _len1 = views.length; _j < _len1; _j++) {
-        view = views[_j];
+      for (j = 0, len1 = views.length; j < len1; j++) {
+        view = views[j];
         this.add(view, options);
       }
       if (!options.silent) {
@@ -371,12 +362,11 @@ module.exports = ViewCollection;
 
 ;require.register("models/bookmark", function(exports, require, module) {
 var Bookmark,
-  __hasProp = {}.hasOwnProperty,
-  __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
+  extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+  hasProp = {}.hasOwnProperty;
 
-module.exports = Bookmark = (function(_super) {
-
-  __extends(Bookmark, _super);
+module.exports = Bookmark = (function(superClass) {
+  extend(Bookmark, superClass);
 
   function Bookmark() {
     return Bookmark.__super__.constructor.apply(this, arguments);
@@ -385,18 +375,18 @@ module.exports = Bookmark = (function(_super) {
   Bookmark.prototype.urlRoot = 'bookmarks';
 
   Bookmark.prototype.isNew = function() {
-    return !(this.id != null);
+    return this.id == null;
   };
 
   Bookmark.prototype.cleanValues = function() {
-    var httpUrl, readableTags, tag, tags, _i, _len;
+    var httpUrl, i, len, readableTags, tag, tags;
     readableTags = "";
     tags = this.attributes.tags;
     if (typeof tags === "string") {
       tags = tags.split(",");
     }
-    for (_i = 0, _len = tags.length; _i < _len; _i++) {
-      tag = tags[_i];
+    for (i = 0, len = tags.length; i < len; i++) {
+      tag = tags[i];
       readableTags += tag + ", ";
     }
     readableTags = readableTags.slice(0, readableTags.length - 2);
@@ -416,12 +406,11 @@ module.exports = Bookmark = (function(_super) {
 
 ;require.register("routers/app_router", function(exports, require, module) {
 var AppRouter,
-  __hasProp = {}.hasOwnProperty,
-  __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
+  extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+  hasProp = {}.hasOwnProperty;
 
-module.exports = AppRouter = (function(_super) {
-
-  __extends(AppRouter, _super);
+module.exports = AppRouter = (function(superClass) {
+  extend(AppRouter, superClass);
 
   function AppRouter() {
     return AppRouter.__super__.constructor.apply(this, arguments);
@@ -439,8 +428,8 @@ module.exports = AppRouter = (function(_super) {
 
 ;require.register("views/app_view", function(exports, require, module) {
 var AppRouter, AppView, Bookmark, BookmarksView, View,
-  __hasProp = {}.hasOwnProperty,
-  __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
+  extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+  hasProp = {}.hasOwnProperty;
 
 View = require("../lib/view");
 
@@ -450,9 +439,8 @@ BookmarksView = require("./bookmarks_view");
 
 Bookmark = require("../models/bookmark");
 
-module.exports = AppView = (function(_super) {
-
-  __extends(AppView, _super);
+module.exports = AppView = (function(superClass) {
+  extend(AppView, superClass);
 
   function AppView() {
     return AppView.__super__.constructor.apply(this, arguments);
@@ -480,19 +468,20 @@ module.exports = AppView = (function(_super) {
   };
 
   AppView.prototype.afterRender = function() {
-    var _this = this;
     $(".url-field").focus();
     this.bookmarksView = new BookmarksView();
     this.bookmarksView.$el.html('<em>loading...</em>');
     return this.bookmarksView.collection.fetch({
-      success: function() {
-        _this.bookmarksView.$el.find('em').remove();
-        window.sortOptions = {
-          "valueNames": ["title", "url", "tags", "description"]
+      success: (function(_this) {
+        return function() {
+          _this.bookmarksView.$el.find('em').remove();
+          window.sortOptions = {
+            "valueNames": ["title", "url", "tags", "description"]
+          };
+          window.featureList = new List("bookmarks-list", window.sortOptions);
+          return alertify.log("bookmarks loaded");
         };
-        window.featureList = new List("bookmarks-list", window.sortOptions);
-        return alertify.log("bookmarks loaded");
-      }
+      })(this)
     });
   };
 
@@ -529,8 +518,7 @@ module.exports = AppView = (function(_super) {
   };
 
   AppView.prototype.bookmarkLink = function(evt) {
-    var bookObj, bookmark, description, tags, title, url,
-      _this = this;
+    var bookObj, bookmark, description, tags, title, url;
     url = $('.url-field').val();
     title = $('.title-field').val();
     tags = $('.tags-field').val().split(',').map(function(tag) {
@@ -546,13 +534,17 @@ module.exports = AppView = (function(_super) {
       };
       bookmark = new Bookmark(bookObj);
       this.bookmarksView.collection.create(bookmark, {
-        success: function() {
-          _this.cleanForm();
-          return alertify.log("" + (title || url) + " added");
-        },
-        error: function() {
-          return alertify.alert("Server error occured, " + "bookmark was not saved");
-        }
+        success: (function(_this) {
+          return function() {
+            _this.cleanForm();
+            return alertify.log("" + (title || url) + " added");
+          };
+        })(this),
+        error: (function(_this) {
+          return function() {
+            return alertify.alert("Server error occured, " + "bookmark was not saved");
+          };
+        })(this)
       });
     } else {
       alertify.alert("Url field is required");
@@ -561,8 +553,7 @@ module.exports = AppView = (function(_super) {
   };
 
   AppView.prototype.addBookmarkFromFile = function(link) {
-    var $link, bookObj, bookmark, description, next, title, url,
-      _this = this;
+    var $link, bookObj, bookmark, description, next, title, url;
     $link = $(link);
     if (!!$link.attr("href").indexOf("place") && !$link.attr("feedurl")) {
       url = $link.attr("href");
@@ -580,52 +571,57 @@ module.exports = AppView = (function(_super) {
       };
       bookmark = new Bookmark(bookObj);
       return this.bookmarksView.collection.create(bookmark, {
-        success: function() {
-          var imported;
-          imported = $(".imported");
-          if (imported.text()) {
-            return imported.text(parseInt(imported.text()) + 1);
-          } else {
-            return imported.text(1);
-          }
-        },
-        error: function() {
-          var notImported;
-          notImported = $(".import-failed");
-          if (notImported.text()) {
-            return notImported.text(parseInt(notImported.text()) + 1);
-          } else {
-            return notImported.text(1);
-          }
-        }
+        success: (function(_this) {
+          return function() {
+            var imported;
+            imported = $(".imported");
+            if (imported.text()) {
+              return imported.text(parseInt(imported.text()) + 1);
+            } else {
+              return imported.text(1);
+            }
+          };
+        })(this),
+        error: (function(_this) {
+          return function() {
+            var notImported;
+            notImported = $(".import-failed");
+            if (notImported.text()) {
+              return notImported.text(parseInt(notImported.text()) + 1);
+            } else {
+              return notImported.text(1);
+            }
+          };
+        })(this)
       });
     }
   };
 
   AppView.prototype.addBookmarksFromFile = function(file) {
-    var link, links, loaded, _i, _len, _results;
+    var i, len, link, links, loaded, results;
     loaded = $(file);
     links = loaded.find("dt a");
-    _results = [];
-    for (_i = 0, _len = links.length; _i < _len; _i++) {
-      link = links[_i];
-      _results.push(this.addBookmarkFromFile(link));
+    results = [];
+    for (i = 0, len = links.length; i < len; i++) {
+      link = links[i];
+      results.push(this.addBookmarkFromFile(link));
     }
-    return _results;
+    return results;
   };
 
   AppView.prototype.uploadFile = function(evt) {
-    var file, reader,
-      _this = this;
+    var file, reader;
     file = evt.target.files[0];
     if (file.type !== "text/html") {
       alertify.alert("This file cannot be imported");
       return;
     }
     reader = new FileReader();
-    reader.onload = function(evt) {
-      return _this.addBookmarksFromFile(evt.target.result);
-    };
+    reader.onload = (function(_this) {
+      return function(evt) {
+        return _this.addBookmarksFromFile(evt.target.result);
+      };
+    })(this);
     return reader.readAsText(file);
   };
 
@@ -649,14 +645,13 @@ module.exports = AppView = (function(_super) {
 
 ;require.register("views/bookmark_view", function(exports, require, module) {
 var BookmarkView, View,
-  __hasProp = {}.hasOwnProperty,
-  __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
+  extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+  hasProp = {}.hasOwnProperty;
 
 View = require("../lib/view");
 
-module.exports = BookmarkView = (function(_super) {
-
-  __extends(BookmarkView, _super);
+module.exports = BookmarkView = (function(superClass) {
+  extend(BookmarkView, superClass);
 
   BookmarkView.prototype.className = "bookmark";
 
@@ -683,8 +678,7 @@ module.exports = BookmarkView = (function(_super) {
   };
 
   BookmarkView.prototype.deleteBookmark = function() {
-    var title,
-      _this = this;
+    var title;
     title = this.$el.find(".title").html();
     $(".url-field").val(this.$el.find(".title a").attr("href"));
     $(".title-field").val(this.$el.find(".title a").text());
@@ -692,15 +686,19 @@ module.exports = BookmarkView = (function(_super) {
     $(".description-field").val(this.$el.find(".description p").text());
     $(".full-form").show();
     return this.model.destroy({
-      success: function() {
-        _this.destroy();
-        window.featureList.remove("title", title);
-        return alertify.log("" + title + " removed and placed in form");
-      },
-      error: function() {
-        alertify.alert("Server error occured, bookmark was not deleted.");
-        return _this.$('.delete-button').html("delete");
-      }
+      success: (function(_this) {
+        return function() {
+          _this.destroy();
+          window.featureList.remove("title", title);
+          return alertify.log("" + title + " removed and placed in form");
+        };
+      })(this),
+      error: (function(_this) {
+        return function() {
+          alertify.alert("Server error occured, bookmark was not deleted.");
+          return _this.$('.delete-button').html("delete");
+        };
+      })(this)
     });
   };
 
@@ -712,9 +710,9 @@ module.exports = BookmarkView = (function(_super) {
 
 ;require.register("views/bookmarks_view", function(exports, require, module) {
 var BookmarkCollection, BookmarkView, BookmarksView, ViewCollection,
-  __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
-  __hasProp = {}.hasOwnProperty,
-  __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
+  bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
+  extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+  hasProp = {}.hasOwnProperty;
 
 ViewCollection = require('../lib/view_collection');
 
@@ -722,12 +720,11 @@ BookmarkView = require('./bookmark_view');
 
 BookmarkCollection = require('../collections/bookmark_collection');
 
-module.exports = BookmarksView = (function(_super) {
-
-  __extends(BookmarksView, _super);
+module.exports = BookmarksView = (function(superClass) {
+  extend(BookmarksView, superClass);
 
   function BookmarksView() {
-    this.renderOne = __bind(this.renderOne, this);
+    this.renderOne = bind(this.renderOne, this);
     return BookmarksView.__super__.constructor.apply(this, arguments);
   }
 
@@ -802,7 +799,7 @@ attrs = attrs || jade.attrs; escape = escape || jade.escape; rethrow = rethrow |
 var buf = [];
 with (locals || {}) {
 var interp;
-buf.push('<div id="content"><input type="file" name="bookmarks-file" id="bookmarks-file"/><span class="import"><button title="import html bookmarks files exported from your browser" class="glyphicon glyphicon-upload import"><p class="imported"></p><p class="importe-failed"></p></button></span><span class="export"><button title="export bookmarks in html" class="glyphicon glyphicon-download export"></button></span><form id="create-bookmark-form" role="form"><div class="panel panel-default"><div class="panel-heading title"><h3 title="Show the full form" class="panel-title"> \nBookmark a link</h3><div class="row"><div class="form-group col-xs-8"><input placeholder="url" class="form-control url-field"/></div></div></div><div class="panel-body full-form"><div class="row"><div class="form-group col-xs-5"><input placeholder="title" class="form-control title-field"/></div><div class="form-group col-xs-5"><input placeholder="tags, separated by \',\'" class="form-control tags-field"/></div></div><div class="row"><div class="form-group col-xs-10"><textarea placeholder="description" class="form-control description-field"></textarea></div><div class="buttons col-xs-2"><button title="Save the bookmark" class="glyphicon glyphicon-ok-circle create"></button><button title="Clean the form" class="glyphicon glyphicon-remove-circle clean"></button></div></div></div></div></form><div id="bookmarks-list"><div class="panel panel-default"><div class="panel-heading"><h3 class="panel-title">mY BOOkmarks</h3><div class="row"><div class="tools col-xs-12"><div class="form-group"><input placeholder="search" class="form-control search"/></div><button title="Sort links" data-sort="title" class="glyphicon glyphicon-sort sort descending"></button></div></div></div><div class="panel-body"><ul class="list"></ul></div></div></div></div>');
+buf.push('<div id="content"><div id="warning" class="panel"><div class="panel-body"><p>Please note that this application will not be updated anymore.</p><p>The future version of this application is now the <a target="_blank" href="https://github.com/pierrerousseau/quickmarks">quickmarks </a>app, available in the <a href="/#applications">market place</a>.</p></div></div><input type="file" name="bookmarks-file" id="bookmarks-file"/><span class="import"><button title="import html bookmarks files exported from your browser" class="glyphicon glyphicon-upload import"><p class="imported"></p><p class="importe-failed"></p></button></span><span class="export"><button title="export bookmarks in html" class="glyphicon glyphicon-download export"></button></span><form id="create-bookmark-form" role="form"><div class="panel panel-default"><div class="panel-heading title"><h3 title="Show the full form" class="panel-title"> \nBookmark a link</h3><div class="row"><div class="form-group col-xs-8"><input placeholder="url" class="form-control url-field"/></div></div></div><div class="panel-body full-form"><div class="row"><div class="form-group col-xs-5"><input placeholder="title" class="form-control title-field"/></div><div class="form-group col-xs-5"><input placeholder="tags, separated by \',\'" class="form-control tags-field"/></div></div><div class="row"><div class="form-group col-xs-10"><textarea placeholder="description" class="form-control description-field"></textarea></div><div class="buttons col-xs-2"><button title="Save the bookmark" class="glyphicon glyphicon-ok-circle create"></button><button title="Clean the form" class="glyphicon glyphicon-remove-circle clean"></button></div></div></div></div></form><div id="bookmarks-list"><div class="panel panel-default"><div class="panel-heading"><h3 class="panel-title">mY BOOkmarks</h3><div class="row"><div class="tools col-xs-12"><div class="form-group"><input placeholder="search" class="form-control search"/></div><button title="Sort links" data-sort="title" class="glyphicon glyphicon-sort sort descending"></button></div></div></div><div class="panel-body"><ul class="list"></ul></div></div></div></div>');
 }
 return buf.join("");
 };
